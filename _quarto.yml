@@ -2,18 +2,18 @@ project:
   type: website
 
 website:
-  title: "Your_Name - Data Science Portfolio"
+  title: "Riku_Nakamura - Data Science Portfolio"
   favicon: Images/favicon.png
   back-to-top-navigation: true
-  repo-url: https://github.com/username/username.github.io
+  repo-url: https://github.com/riku05190/riku-nakamura.github.io
   #repo-actions: [issue] #if you want to allow others to report issues on your site uncomment this line
 
   page-footer: 
     border: true
-    left: "Your_Name 2024©"
+    left: "Riku_nakamura 2024©"
     right: 
       - icon: linkedin
-        href: Your_LinkedIn_URL
+        href: www.linkedin.com/in/riku-nakamura-49521b304
 
   navbar:
     background: primary
