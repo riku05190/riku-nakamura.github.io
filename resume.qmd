@@ -1,90 +1,89 @@
 ---
 layout: cv
-title: Isaac Newtons's CV
+title: Riku Nakamura's CV
 ---
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
+# Riku Nakamura
+Computer Science
 
 <div id="webaddress">
-<a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
-| <a href="http://en.wikipedia.org/wiki/Isaac_Newton">My wikipedia page</a>
+|<a href="https://github.com/riku05190">GitHub</a>
 <!-- | <a href="https://yourusername.github.io/datascience_portfolio/gh-pages/resume.pdf">Download PDF</a> -->
-| <a href="https://github.com/byuidatascience/datascience_portfolio/blob/gh-pages/resume.pdf">Download PDF</a>
+
+| <a href="www.linkedin.com/in/riku-nakamura-49521b304">LinkedIn</a>
 </div>
 
 
 ## Currently
 
-Standing on the shoulders of giants
+Pursuing a Bachelor's degree in Computer Science at BYU-Idaho. Dedicated to creating an environment where everyone can make proactive choices through technology and community building. Currently seeking career opportunities in Japan for the 2027 graduate recruitment cycle.
 
 ### Specialized in
 
-Laws of motion, gravitation, minting coins, disliking [Robert Hooke](http://en.wikipedia.org/wiki/Robert_Hooke)
+Java (Spring Framework), JavaScript (React Native), HTML/CSS, Marketing & Sales Strategy
 
 
 ### Research interests
 
-Cooling, power series, optics, alchemy, planetary motions, apples.
-
+Cooling, power series, optics, alchemy, planetary motions, apples.Web Development, Data Analysis, Consumer Psychology, Self-Analysis, Community Management
 
 ## Education
 
-`1654-1660`
-__The King's School, Grantham.__
+Jan 2026 - Present
+Brigham Young University - Idaho
 
-`June 1661 - now`
-__Trinity College, Cambridge__
+B.S. in Computer Science (Expected Graduation: Spring 2027)
 
-- Sizar
+Apr 2024 - Dec 2025
+Ensign College
 
-`1667 - death`
-__Trinity College, Cambridge__
+Pre-transfer studies
 
-- Fellow
+Apr 2019 - Mar 2024
+Ube National College of Technology
 
+Associate of Engineering in Material Engineering
 
 
 ## Awards
 
-`2012`
-President, *Royal Society*, London, UK
+`Dec 2025
+Job Offer
 
-Associate, *French Academy of Science*, Paris, France
+Zensho Holdings Co., Ltd.
 
+Jan 2026 - Present
+Job Hunting Status
+
+Currently participating in the 2027 new graduate recruitment process for LINE Yahoo (LY Corporation) and other major IT firms via ONE CAREER and ABABA.
 
 
 ## Publications
+Aug 2025
+Nakamura R, Productivity Management Application for Accounting Firms.
 
-<!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
+Developed a custom efficiency tool to streamline internal workflows and task management.
 
-### Journals
+Oct 2025
+Nakamura R, Matching Application for Recruitment Agencies.
 
-`1669`
-Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
+Built a platform to facilitate efficient talent-company matching processes.
 
-`1669`
-Lectiones opticæ.
-
-etc. etc. etc.
 
 ### Patents
+Feb 2026
+Freelance Service Agreement, TOKUMORI Patent/Contract 001.
 
-`2012`
-Infinitesimal calculus for solutions to physics problems, [SMBC](http://www.techdirt.com/articles/20121011/09312820678/if-patents-had-been-around-time-newton.shtml) patent 001
-
+Signed as a freelance developer/consultant.
 
 ## Occupation
 
-`1600`
-__Royal Mint__, London
+Jul 2026 - Aug 2026 (Planned)
+Internship, Japan
 
-- Warden
-- Minted coins
+Mar 2024
+Ube National College of Technology
 
-`1600`
-__Lucasian professor of Mathematics__, Cambridge University
-
-
+Completed Associate Degree program
 
 <!-- ### Footer
 
