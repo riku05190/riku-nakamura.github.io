@@ -1,167 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/competition.html</loc>
-    <lastmod>2026-04-28T13:45:17.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Machine_Learning/project2.html</loc>
-    <lastmod>2026-04-28T13:45:17.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Machine_Learning/project4.html</loc>
-    <lastmod>2026-04-28T13:45:17.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Machine_Learning/project1.html</loc>
-    <lastmod>2026-04-28T13:45:17.595Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project3.html</loc>
-    <lastmod>2026-04-28T13:45:17.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project5.html</loc>
-    <lastmod>2026-04-28T13:45:17.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/cleansing.html</loc>
-    <lastmod>2026-04-28T13:45:17.605Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Full_Stack/project3.html</loc>
-    <lastmod>2026-04-28T13:45:17.595Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Full_Stack/project5.html</loc>
-    <lastmod>2026-04-28T13:45:17.595Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/full_stack.html</loc>
-    <lastmod>2026-04-28T13:45:17.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/ml.html</loc>
-    <lastmod>2026-04-28T13:45:17.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project2.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project4.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project1.html</loc>
-    <lastmod>2026-04-28T13:45:17.593Z</lastmod>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/story_telling.html</loc>
+    <lastmod>2026-04-30T11:00:17.657Z</lastmod>
   </url>
   <url>
     <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Projects/project3.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
   </url>
   <url>
     <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Projects/project5.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/exploration.html</loc>
-    <lastmod>2026-04-28T13:45:17.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project3.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project5.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
   </url>
   <url>
     <loc>https://riku05190.github.io/riku-nakamura.github.io/notebooks/Exploration_01_Polars.html</loc>
-    <lastmod>2026-04-28T13:45:17.612Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/notebooks/Exploration_02.html</loc>
-    <lastmod>2026-04-28T13:45:17.613Z</lastmod>
+    <lastmod>2026-04-30T11:00:17.656Z</lastmod>
   </url>
   <url>
     <loc>https://riku05190.github.io/riku-nakamura.github.io/notebooks/Exploration_01.html</loc>
-    <lastmod>2026-04-28T13:45:17.609Z</lastmod>
+    <lastmod>2026-04-30T11:00:17.653Z</lastmod>
   </url>
   <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project1.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project3.html</loc>
+    <lastmod>2026-04-30T11:00:17.644Z</lastmod>
   </url>
   <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project4.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project2.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Projects/project1.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Projects/project4.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Projects/project2.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project5.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project3.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/story_telling.html</loc>
-    <lastmod>2026-04-28T13:45:17.613Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/resume.html</loc>
-    <lastmod>2026-04-28T13:45:17.613Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Full_Stack/project1.html</loc>
-    <lastmod>2026-04-28T13:45:17.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Full_Stack/project4.html</loc>
-    <lastmod>2026-04-28T13:45:17.595Z</lastmod>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project5.html</loc>
+    <lastmod>2026-04-30T11:00:17.644Z</lastmod>
   </url>
   <url>
     <loc>https://riku05190.github.io/riku-nakamura.github.io/Full_Stack/project2.html</loc>
-    <lastmod>2026-04-28T13:45:17.595Z</lastmod>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
   </url>
   <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project1.html</loc>
-    <lastmod>2026-04-28T13:45:17.596Z</lastmod>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Full_Stack/project1.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
   </url>
   <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project4.html</loc>
-    <lastmod>2026-04-28T13:45:17.596Z</lastmod>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Full_Stack/project4.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
   </url>
   <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project2.html</loc>
-    <lastmod>2026-04-28T13:45:17.596Z</lastmod>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/ml.html</loc>
+    <lastmod>2026-04-30T11:00:17.650Z</lastmod>
   </url>
   <url>
-    <loc>https://riku05190.github.io/riku-nakamura.github.io/Machine_Learning/project5.html</loc>
-    <lastmod>2026-04-28T13:45:17.596Z</lastmod>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project3.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project5.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/exploration.html</loc>
+    <lastmod>2026-04-30T11:00:17.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Assessment.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
   </url>
   <url>
     <loc>https://riku05190.github.io/riku-nakamura.github.io/Machine_Learning/project3.html</loc>
-    <lastmod>2026-04-28T13:45:17.596Z</lastmod>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Machine_Learning/project5.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/full_stack.html</loc>
+    <lastmod>2026-04-30T11:00:17.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project2.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project1.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project4.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/resume.html</loc>
+    <lastmod>2026-04-30T11:00:17.657Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project5.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Competition/project3.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/cleansing.html</loc>
+    <lastmod>2026-04-30T11:00:17.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Machine_Learning/project4.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Machine_Learning/project1.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Machine_Learning/project2.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/competition.html</loc>
+    <lastmod>2026-04-30T11:00:17.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project4.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project1.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Exploration/project2.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
   </url>
   <url>
     <loc>https://riku05190.github.io/riku-nakamura.github.io/index.html</loc>
-    <lastmod>2026-04-28T13:45:17.606Z</lastmod>
+    <lastmod>2026-04-30T11:00:17.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Full_Stack/project5.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Full_Stack/project3.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project4.html</loc>
+    <lastmod>2026-04-30T11:00:17.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project1.html</loc>
+    <lastmod>2026-04-30T11:00:17.643Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Story_Telling/project2.html</loc>
+    <lastmod>2026-04-30T11:00:17.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/notebooks/Exploration_02.html</loc>
+    <lastmod>2026-04-30T11:00:17.657Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Projects/project4.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Projects/project1.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://riku05190.github.io/riku-nakamura.github.io/Cleansing_Projects/project2.html</loc>
+    <lastmod>2026-04-30T11:00:17.642Z</lastmod>
   </url>
 </urlset>
