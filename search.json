@@ -1,5 +1,128 @@
 [
   {
+    "objectID": "full_stack.html",
+    "href": "full_stack.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Full Stack"
+    ]
+  },
+  {
+    "objectID": "full_stack.html#title-2-header",
+    "href": "full_stack.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Full Stack"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project1.html",
+    "href": "Full_Stack/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project5.html",
+    "href": "Full_Stack/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project3.html",
+    "href": "Full_Stack/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "notebooks/Exploration_01_Polars.html#mpaa-movie-ratings",
+    "href": "notebooks/Exploration_01_Polars.html#mpaa-movie-ratings",
+    "title": "Data Exploration 01",
+    "section": "MPAA Movie Ratings:",
+    "text": "MPAA Movie Ratings:\n\nG: All ages admitted.\nPG: Some material may not be suitable for children.\nPG-13: Some material may be inappropriate for children under 13.\nR: Under 17 requires accompanying parent or adult guardian\nNC-17: No One 17 and Under Admitted\n\nMost people would consider G and PG as ratings suitable for children. However, not everyone would agree that a PG-13 movie is necssarily a children’s movie. It is up to you to decide how to handle this."
+  },
+  {
+    "objectID": "notebooks/Exploration_01_Polars.html#part-1-import-polars",
+    "href": "notebooks/Exploration_01_Polars.html#part-1-import-polars",
+    "title": "Data Exploration 01",
+    "section": "Part 1: Import Polars",
+    "text": "Part 1: Import Polars\nThe polars library is a python library used for data analysis and manipulation. It will provide the core functionality for most of what you do in the data exploration and preprocessing stages of most machine learning projects.\nPlease see this Getting Started Guide for information on the conventional way to import Polars into your project, as well as other helpful tips for common Polars tasks.\n\n# Part 1: Enter the code below to import Polars according to the\n# conventional method.\nimport polars as pl"
+  },
+  {
+    "objectID": "notebooks/Exploration_01_Polars.html#part-2-load-the-data",
+    "href": "notebooks/Exploration_01_Polars.html#part-2-load-the-data",
+    "title": "Data Exploration 01",
+    "section": "Part 2: Load the data",
+    "text": "Part 2: Load the data\nThe dataset for this exploration is stored at the following url:\nhttps://raw.githubusercontent.com/byui-cse/cse450-course/master/data/netflix_titles.csv\nThere are lots of ways to load data into your workspace. The easiest way in this case is to ask Polars to do it for you.\n\nInitial Data Analysis\nOnce you’ve loaded the data, it’s a good idea to poke around a little bit to find out what you’re dealing with.\nSome questions you might ask include:\n\nWhat does the data look like?\nWhat kind of data is in each column?\nDo any of the columns have missing values?\n\n\n# Part 2: Load the dataset into a Polars dataframe.\nurl = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/netflix_titles.csv\"\ndf = pl.read_csv(url)\n\n\n# Then, explore the data by seeing what the first few rows look like.\nprint(df.head())\n\nshape: (5, 12)\n┌──────────┬─────────┬────────────┬────────────┬───┬──────────┬──────────┬────────────┬────────────┐\n│ show_id  ┆ type    ┆ title      ┆ director   ┆ … ┆ rating   ┆ duration ┆ listed_in  ┆ descriptio │\n│ ---      ┆ ---     ┆ ---        ┆ ---        ┆   ┆ ---      ┆ ---      ┆ ---        ┆ n          │\n│ i64      ┆ str     ┆ str        ┆ str        ┆   ┆ str      ┆ str      ┆ str        ┆ ---        │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ str        │\n╞══════════╪═════════╪════════════╪════════════╪═══╪══════════╪══════════╪════════════╪════════════╡\n│ 81145628 ┆ Movie   ┆ Norm of    ┆ Richard    ┆ … ┆ TV-PG    ┆ 90 min   ┆ Children & ┆ Before     │\n│          ┆         ┆ the North: ┆ Finn, Tim  ┆   ┆          ┆          ┆ Family     ┆ planning   │\n│          ┆         ┆ King Sized ┆ Maltby     ┆   ┆          ┆          ┆ Movies,    ┆ an awesome │\n│          ┆         ┆ …          ┆            ┆   ┆          ┆          ┆ Come…      ┆ wed…       │\n│ 80117401 ┆ Movie   ┆ Jandino:   ┆ null       ┆ … ┆ TV-MA    ┆ 94 min   ┆ Stand-Up   ┆ Jandino    │\n│          ┆         ┆ Whatever   ┆            ┆   ┆          ┆          ┆ Comedy     ┆ Asporaat   │\n│          ┆         ┆ it Takes   ┆            ┆   ┆          ┆          ┆            ┆ riffs on   │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ the …      │\n│ 70234439 ┆ TV Show ┆ Transforme ┆ null       ┆ … ┆ TV-Y7-FV ┆ 1 Season ┆ Kids' TV   ┆ With the   │\n│          ┆         ┆ rs Prime   ┆            ┆   ┆          ┆          ┆            ┆ help of    │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ three      │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ human a…   │\n│ 80058654 ┆ TV Show ┆ Transforme ┆ null       ┆ … ┆ TV-Y7    ┆ 1 Season ┆ Kids' TV   ┆ When a     │\n│          ┆         ┆ rs: Robots ┆            ┆   ┆          ┆          ┆            ┆ prison     │\n│          ┆         ┆ in Disgui… ┆            ┆   ┆          ┆          ┆            ┆ ship crash │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ unlea…     │\n│ 80125979 ┆ Movie   ┆ #realityhi ┆ Fernando   ┆ … ┆ TV-14    ┆ 99 min   ┆ Comedies   ┆ When nerdy │\n│          ┆         ┆ gh         ┆ Lebrija    ┆   ┆          ┆          ┆            ┆ high       │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ schooler   │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ Dani …     │\n└──────────┴─────────┴────────────┴────────────┴───┴──────────┴──────────┴────────────┴────────────┘\n\n\n\n# Next, display a technical summary of the data to determine the data types of each column, and which columns have missing data.\nprint(df.schema)\nprint(df.null_count())\n\nSchema({'show_id': Int64, 'type': String, 'title': String, 'director': String, 'cast': String, 'country': String, 'date_added': String, 'release_year': Int64, 'rating': String, 'duration': String, 'listed_in': String, 'description': String})\nshape: (1, 12)\n┌─────────┬──────┬───────┬──────────┬───┬────────┬──────────┬───────────┬─────────────┐\n│ show_id ┆ type ┆ title ┆ director ┆ … ┆ rating ┆ duration ┆ listed_in ┆ description │\n│ ---     ┆ ---  ┆ ---   ┆ ---      ┆   ┆ ---    ┆ ---      ┆ ---       ┆ ---         │\n│ u32     ┆ u32  ┆ u32   ┆ u32      ┆   ┆ u32    ┆ u32      ┆ u32       ┆ u32         │\n╞═════════╪══════╪═══════╪══════════╪═══╪════════╪══════════╪═══════════╪═════════════╡\n│ 0       ┆ 0    ┆ 0     ┆ 1969     ┆ … ┆ 10     ┆ 0        ┆ 0         ┆ 0           │\n└─────────┴──────┴───────┴──────────┴───┴────────┴──────────┴───────────┴─────────────┘"
+  },
+  {
+    "objectID": "notebooks/Exploration_01_Polars.html#part-3-filter-the-data",
+    "href": "notebooks/Exploration_01_Polars.html#part-3-filter-the-data",
+    "title": "Data Exploration 01",
+    "section": "Part 3: Filter the Data",
+    "text": "Part 3: Filter the Data\nSince we’re just interested in movies, we’ll need to filter out anything that isn’t a movie for our analysis. The type feature contains this information.\nOnce we have the subset, we should see how many rows it contains. There are a variety of ways to get the length of a data frame.\n\n# Use polars's filtering abilitites to select the subset of data\n# that represents movies, then calculate how many rows are in the filtered data.\nmovies = df.filter(pl.col(\"type\") == \"Movie\")\n\n\nMPAA Ratings\nNow that we have only movies, let’s get a quick count of the values being used in the rating feature.\n\n# Determine the number of records for each value of the \"rating\" feature.\n# Remember to count the values in your subset only, not in the original dataframe.\nprint(f\"Number of movies: {len(movies)}\")\nrating_counts = movies.group_by(\"rating\").count().sort(\"count\", descending=True)\nprint(rating_counts)\n\nNumber of movies: 4265\nshape: (15, 2)\n┌──────────┬───────┐\n│ rating   ┆ count │\n│ ---      ┆ ---   │\n│ str      ┆ u32   │\n╞══════════╪═══════╡\n│ TV-MA    ┆ 1348  │\n│ TV-14    ┆ 1038  │\n│ R        ┆ 506   │\n│ TV-PG    ┆ 432   │\n│ PG-13    ┆ 286   │\n│ …        ┆ …     │\n│ G        ┆ 36    │\n│ TV-Y7-FV ┆ 27    │\n│ null     ┆ 8     │\n│ UR       ┆ 7     │\n│ NC-17    ┆ 2     │\n└──────────┴───────┘\n\n\n/tmp/ipykernel_15519/129873251.py:4: DeprecationWarning: `GroupBy.count` was renamed; use `GroupBy.len` instead\n  rating_counts = movies.group_by(\"rating\").count().sort(\"count\", descending=True)\n\n\n\n\nMore Filtering\nThere are apparently some “made for TV” movies in the list that don’t fit the MPAA rating scheme.\nLet’s filter some more to just see movies rated with the standard MPAA ratings of G, PG, PG-13, R, and NC-17.\n\n# Filter the list of movies to select a new subset containing only movies with\n# a standard MPAA rating. Calculate how many rows are in this new set, and\n# then see which ratings appear most often.\nmpaa_ratings = [\"G\", \"PG\", \"PG-13\", \"R\", \"NC-17\"]\nmpaa_movies = movies.filter(pl.col(\"rating\").is_in(mpaa_ratings))\nprint(f\"Number of MPAA rated movies: {len(mpaa_movies)}\")\n\nNumber of MPAA rated movies: 1013"
+  },
+  {
+    "objectID": "notebooks/Exploration_01_Polars.html#part-4-visualization",
+    "href": "notebooks/Exploration_01_Polars.html#part-4-visualization",
+    "title": "Data Exploration 01",
+    "section": "Part 4: Visualization",
+    "text": "Part 4: Visualization\nNow that we have explored and preprocessed our data, let’s create a visualization to summarize our findings.\n\nExploration vs Presentation\nBroadly speaking, there are two types of visualizations: * Barebones visualizations you might use to get a quick, visual understanding of the data while you’re trying to decide how it all fits together. * Presentation-quality visualizations that you would include in a report or presentation for management or other stakeholders.\n\n\nVisualization Tools\nThere are many different visualization tools availble. In the sections below, we’ll explore the three most common. Each of these libraries has strengths and weaknesses.\nIt is probably a good idea for you to become familiar with each one, and then become proficient at whichever one you like the best.\n\n\nLet’s Plot\nThe Let’s Plot visualization library uses a grammer of graphics to build up a chart piece by piece.\nAssume we have a polars dataframe called employees, with three columns: name, job, salary.\n# Make a box plot style categorical plot showing the distribution of salaries for each job:\nggplot(data=employees, aes(x='job', y='salary')) + geom_box()\n\n# Make a box plot style categorical plot, and customize the results\n(\n    ggplot(data=employees, aes(x='job', y='salary'))\n    + geom_boxplot()\n    + labs(\n        title='Salaries by Job Title'\n    )\n)\nDependencies need to be installed in colab to use Let’s Plot. Use %pip to install it. %pip install lets-plot will install the library, and skip it if it’s already installed.\n\n# Install the lets-plot module into this server\n%pip install lets-plot\n\nRequirement already satisfied: lets-plot in /usr/local/lib/python3.12/dist-packages (4.9.0)\nRequirement already satisfied: pypng in /usr/local/lib/python3.12/dist-packages (from lets-plot) (0.20220715.0)\nRequirement already satisfied: palettable in /usr/local/lib/python3.12/dist-packages (from lets-plot) (3.3.3)\nRequirement already satisfied: pillow in /usr/local/lib/python3.12/dist-packages (from lets-plot) (11.3.0)\n\n\nLike with Polars, there is a conventional way to import Let’s Plot into your projects.\n\n# Import the Let's Plot library the conventional way.\n%pip install lets-plot\nfrom lets_plot import *\nLetsPlot.setup_html()\n\nRequirement already satisfied: lets-plot in /usr/local/lib/python3.12/dist-packages (4.9.0)\nRequirement already satisfied: pypng in /usr/local/lib/python3.12/dist-packages (from lets-plot) (0.20220715.0)\nRequirement already satisfied: palettable in /usr/local/lib/python3.12/dist-packages (from lets-plot) (3.3.3)\nRequirement already satisfied: pillow in /usr/local/lib/python3.12/dist-packages (from lets-plot) (11.3.0)\n\n\nLet’s create a barchart showing the count of each movie rating by using Let’s Plot’s capabilities.\nIn this example, we see the x axis being set to a feature called species, and the y axis is a count of the number of rows for that species.\nIn our case, we want the x-axis to be set to rating.\n\n\nAltair\nThe Altair visualization library provides a large variety of very easy to use statistical charting tools.\nAltair uses a declarative language to build up charts piece by piece.\nAssume we have a pandas dataframe called employees, with three columns: name, job, salary.\n# Make a box plot style categorical plot showing the distribution of salaries for each job:\nalt.Chart(employees).mark_boxplot().encode(\n    x='job',\n    y='salary'\n)\n\n# Make a box plot style categorical plot, and customize the results\nalt.Chart(employees).mark_boxplot().encode(\n    alt.X('job', title='Job title'),\n    alt.Y('salary', title='Annual salary in thousands of $USD')\n).properties(\n  title='Salaries by Job Title'\n)\nLike with Polars, there is a conventional way to import Altair into your projects.\n\n# Import the Altair library the conventional way.\nimport altair as alt\n\nLet’s create a barchart showing the count of each movie rating by using Altair’s aggregation capabilities.\nIn this example, we see the x axis being set to a feature called a, and the y axis set to the average() of a feature called b.\nIn our case, we want the x axis to be set to rating and the y axis to be the count() of rating.\n\n# Use Altair to create a bar chart comparing the count of each movie rating\nchart = alt.Chart(mpaa_movies.to_pandas()).mark_bar().encode(\nx=alt.X('rating', sort=mpaa_ratings),\ny='count()'\n).properties(title='Movie Ratings (Altair)')\nchart.display()\n\n\n\n\n\n\n\n\n\nSeaborn\nWhile Altair uses a “declarative” syntax for building charts piece by piece, the Seaborn library provides a large variety of pre-made charts for common statistical needs.\nThese charts are divided into different categories. Each category has a high-level interface you can use for simplicity, and then a specific function for each chart that you can use if you need more control over how the chart looks.\nSeaborn uses matplotlib for its drawing, and the chart-specific functions each return a matplitlib axes object if you need additional customization.\nFor example, there are several different types of categorical plots in seaborn: bar plots, box plots, point plots, count plots, swarm plots, etc…\nEach of these plots can be accessed using the catplot function.\nAssume we have a pandas dataframe called employees, with three columns: name, job, salary.\n# Make a box plot style categorical plot showing the distribution of salaries for each job:\nsns.catplot(data=employees, x='job', y='salary', kind='box')\n\n# Make a swarm plot style categorical plot\nsns.catplot(data=employees, x='job', y='salary', kind='swarm')\nAlternatively, you can use the plot specific functions to give yourself more control over the output by using matplotlib functions:\n# Make a box plot style categorical plot, and customize the results\nimport matplotlib.pyplot as plt\n\nplt.figure(figsize=(12, 9))\nax = sns.boxplot(data=employees, x='job', y='salary')\nax.set_title(\"Salaries by Job Title\")\nax.set_ylabel(\"Annual salary in thousands of $USD\")\nax.set_xlabel(\"Job title\")\nLike with Polars, there is a conventional way to import Seaborn into your projects.\nOptionally, you may wish to set some default chart aesthetics by setting the chart style.\n\n# Import the seaborn library the conventional way. Then optionally configure\n# the default chart style.\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n\nSince the rating column uses categorical data, we need to use Seaborn’s categorical visualizations.\nIn particular, we want a “count plot” that will display a count of movie ratings.\n\n# Use seaborn to create a count plot comparing the count of each movie rating\nplt.figure(figsize=(10, 6))\nsns.countplot(data=mpaa_movies.to_pandas(), x='rating', order=mpaa_ratings)\nplt.title('Movie Ratings (Seaborn)')\nplt.show()"
+  },
+  {
+    "objectID": "notebooks/Exploration_01_Polars.html#above-and-beyond",
+    "href": "notebooks/Exploration_01_Polars.html#above-and-beyond",
+    "title": "Data Exploration 01",
+    "section": "🌟 Above and Beyond 🌟",
+    "text": "🌟 Above and Beyond 🌟\nAfter reviewing your findings, the watchdog group would like some additional questions answered:\n\nHow are things affected if you include the “made for TV movies” that have been assigned TV ratings in your analysis, but still exclude unrated movies?\nThey would also like to see a separate report that includes only TV shows.\nFor an upcoming community meeting, the group would like to present a simple chart showing “For Kids” and “For Adults” categories. The easiest way to accomplish this would be to create a new column in your data frame that maps each rating to the appropriate “For Kids” or “For Adults” label, then create a new visualization based on that column."
+  },
+  {
+    "objectID": "notebooks/starter_bank.html",
+    "href": "notebooks/starter_bank.html",
+    "title": "Riku_Nakamura - Data Science Portfolio",
+    "section": "",
+    "text": "import pandas as pd\n\ncampaign = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bank.csv')\n\n\n# データの最初の5行を表示\nprint(campaign.head())\n\n# データの基本情報（列名、データ型、欠損値の有無）を確認\nprint(campaign.info())\n\n# ターゲット変数 'y' (契約したかどうか) の割合を確認\n# これで「不均衡データ」かどうか分かります\nprint(campaign['y'].value_counts(normalize=True))\n\n   age        job  marital    education  default housing loan    contact  \\\n0   56  housemaid  married     basic.4y       no      no   no  telephone   \n1   57   services  married  high.school  unknown      no   no  telephone   \n2   37   services  married  high.school       no     yes   no  telephone   \n3   40     admin.  married     basic.6y       no      no   no  telephone   \n4   56   services  married  high.school       no      no  yes  telephone   \n\n  month day_of_week  campaign  pdays  previous     poutcome  emp.var.rate  \\\n0   may         mon         1    999         0  nonexistent           1.1   \n1   may         mon         1    999         0  nonexistent           1.1   \n2   may         mon         1    999         0  nonexistent           1.1   \n3   may         mon         1    999         0  nonexistent           1.1   \n4   may         mon         1    999         0  nonexistent           1.1   \n\n   cons.price.idx  cons.conf.idx  euribor3m  nr.employed   y  \n0          93.994          -36.4      4.857       5191.0  no  \n1          93.994          -36.4      4.857       5191.0  no  \n2          93.994          -36.4      4.857       5191.0  no  \n3          93.994          -36.4      4.857       5191.0  no  \n4          93.994          -36.4      4.857       5191.0  no  \n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 37069 entries, 0 to 37068\nData columns (total 20 columns):\n #   Column          Non-Null Count  Dtype  \n---  ------          --------------  -----  \n 0   age             37069 non-null  int64  \n 1   job             37069 non-null  object \n 2   marital         37069 non-null  object \n 3   education       37069 non-null  object \n 4   default         37069 non-null  object \n 5   housing         37069 non-null  object \n 6   loan            37069 non-null  object \n 7   contact         37069 non-null  object \n 8   month           37069 non-null  object \n 9   day_of_week     37069 non-null  object \n 10  campaign        37069 non-null  int64  \n 11  pdays           37069 non-null  int64  \n 12  previous        37069 non-null  int64  \n 13  poutcome        37069 non-null  object \n 14  emp.var.rate    37069 non-null  float64\n 15  cons.price.idx  37069 non-null  float64\n 16  cons.conf.idx   37069 non-null  float64\n 17  euribor3m       37069 non-null  float64\n 18  nr.employed     37069 non-null  float64\n 19  y               37069 non-null  object \ndtypes: float64(5), int64(4), object(11)\nmemory usage: 5.7+ MB\nNone\ny\nno     0.886482\nyes    0.113518\nName: proportion, dtype: float64\n\n\n\n# 文字列の列を数値（0か1）に変換する\n# 例: job列が 'student', 'technician' などに分かれる\ncampaign_final = pd.get_dummies(campaign, drop_first=True)\n\n\n# 答え（y）以外のすべてをXにする\nX = campaign_final.drop('y_yes', axis=1)\n\n# 答えだけをyにする\ny = campaign_final['y_yes']\n\n\nfrom sklearn.model_selection import train_test_split\n\n# 80%を学習用、20%をテスト用に分ける\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n\nfrom sklearn.tree import DecisionTreeClassifier\n\n# モデルの定義（最初は木の深さを制限するのがコツ：過学習防止）\nclf = DecisionTreeClassifier(max_depth=5)\n\n# 学習開始！\nclf.fit(X_train, y_train)\n\n# テストデータで予測してみる\npredictions = clf.predict(X_test)\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project1.html",
+    "href": "Cleansing_Exploration/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project5.html",
+    "href": "Cleansing_Exploration/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project3.html",
+    "href": "Cleansing_Exploration/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
     "objectID": "story_telling.html",
     "href": "story_telling.html",
     "title": "about me",
@@ -17,262 +140,6 @@
     "text": "MarkDown Basics",
     "crumbs": [
       "Story Telling"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project3.html",
-    "href": "Cleansing_Projects/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project5.html",
-    "href": "Cleansing_Projects/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "notebooks/starter_bank.html",
-    "href": "notebooks/starter_bank.html",
-    "title": "Riku_Nakamura - Data Science Portfolio",
-    "section": "",
-    "text": "import pandas as pd\n\ncampaign = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bank.csv')\n\n\n# データの最初の5行を表示\nprint(campaign.head())\n\n# データの基本情報（列名、データ型、欠損値の有無）を確認\nprint(campaign.info())\n\n# ターゲット変数 'y' (契約したかどうか) の割合を確認\n# これで「不均衡データ」かどうか分かります\nprint(campaign['y'].value_counts(normalize=True))\n\n   age        job  marital    education  default housing loan    contact  \\\n0   56  housemaid  married     basic.4y       no      no   no  telephone   \n1   57   services  married  high.school  unknown      no   no  telephone   \n2   37   services  married  high.school       no     yes   no  telephone   \n3   40     admin.  married     basic.6y       no      no   no  telephone   \n4   56   services  married  high.school       no      no  yes  telephone   \n\n  month day_of_week  campaign  pdays  previous     poutcome  emp.var.rate  \\\n0   may         mon         1    999         0  nonexistent           1.1   \n1   may         mon         1    999         0  nonexistent           1.1   \n2   may         mon         1    999         0  nonexistent           1.1   \n3   may         mon         1    999         0  nonexistent           1.1   \n4   may         mon         1    999         0  nonexistent           1.1   \n\n   cons.price.idx  cons.conf.idx  euribor3m  nr.employed   y  \n0          93.994          -36.4      4.857       5191.0  no  \n1          93.994          -36.4      4.857       5191.0  no  \n2          93.994          -36.4      4.857       5191.0  no  \n3          93.994          -36.4      4.857       5191.0  no  \n4          93.994          -36.4      4.857       5191.0  no  \n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 37069 entries, 0 to 37068\nData columns (total 20 columns):\n #   Column          Non-Null Count  Dtype  \n---  ------          --------------  -----  \n 0   age             37069 non-null  int64  \n 1   job             37069 non-null  object \n 2   marital         37069 non-null  object \n 3   education       37069 non-null  object \n 4   default         37069 non-null  object \n 5   housing         37069 non-null  object \n 6   loan            37069 non-null  object \n 7   contact         37069 non-null  object \n 8   month           37069 non-null  object \n 9   day_of_week     37069 non-null  object \n 10  campaign        37069 non-null  int64  \n 11  pdays           37069 non-null  int64  \n 12  previous        37069 non-null  int64  \n 13  poutcome        37069 non-null  object \n 14  emp.var.rate    37069 non-null  float64\n 15  cons.price.idx  37069 non-null  float64\n 16  cons.conf.idx   37069 non-null  float64\n 17  euribor3m       37069 non-null  float64\n 18  nr.employed     37069 non-null  float64\n 19  y               37069 non-null  object \ndtypes: float64(5), int64(4), object(11)\nmemory usage: 5.7+ MB\nNone\ny\nno     0.886482\nyes    0.113518\nName: proportion, dtype: float64\n\n\n\n# 文字列の列を数値（0か1）に変換する\n# 例: job列が 'student', 'technician' などに分かれる\ncampaign_final = pd.get_dummies(campaign, drop_first=True)\n\n\n# 答え（y）以外のすべてをXにする\nX = campaign_final.drop('y_yes', axis=1)\n\n# 答えだけをyにする\ny = campaign_final['y_yes']\n\n\nfrom sklearn.model_selection import train_test_split\n\n# 80%を学習用、20%をテスト用に分ける\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n\nfrom sklearn.tree import DecisionTreeClassifier\n\n# モデルの定義（最初は木の深さを制限するのがコツ：過学習防止）\nclf = DecisionTreeClassifier(max_depth=5)\n\n# 学習開始！\nclf.fit(X_train, y_train)\n\n# テストデータで予測してみる\npredictions = clf.predict(X_test)\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "notebooks/Exploration_02.html",
-    "href": "notebooks/Exploration_02.html",
-    "title": "Data Exploration 02",
-    "section": "",
-    "text": "You’re working as a data analyst at a cereal marketing company in New York.\nIn a strategy meeting, the marketing director tells you that in 2018, the US weight loss industry was worth over $72 Billion dollars, growing 4% compared to the previous year.\nIn contrast, sales of cold cereal fell 6% to $8.5 billion during the same time period.\nCereal executives have approached the marketing company asking how they can somehow tap into the weight loss market growth to boost the sales of their cereal brands.\nYour assignment is to analyze a dataset of nutritional information for major US cereals, and calculate some metrics that can be used by the marketing team."
-  },
-  {
-    "objectID": "notebooks/Exploration_02.html#part-1-import-pandas-and-load-the-data",
-    "href": "notebooks/Exploration_02.html#part-1-import-pandas-and-load-the-data",
-    "title": "Data Exploration 02",
-    "section": "Part 1: Import Pandas and load the data",
-    "text": "Part 1: Import Pandas and load the data\nRemember to import Pandas the conventional way. If you’ve forgotten how, you may want to review Data Exploration 01.\nThe dataset for this exploration is stored at the following url:\nhttps://raw.githubusercontent.com/byui-cse/cse450-course/master/data/cereal.csv\nThere are lots of ways to load data into your workspace. The easiest way in this case is to ask Pandas to do it for you.\n\nInitial Data Analysis\nOnce you’ve loaded the data, it’s a good idea to poke around a little bit to find out what you’re dealing with.\nSome questions you might ask include:\n\nWhat does the data look like?\nWhat kind of data is in each column?\nDo any of the columns have missing values?\n\n\n# Part 1: Enter your code below to import Pandas according to the\n# conventional method. Then load the dataset into a Pandas dataframe.\n\n# Write any code needed to explore the data by seeing what the first few\n# rows look like. Then display a technical summary of the data to determine\n# the data types of each column, and which columns have missing data.\nimport pandas as pd\n\nurl = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/cereal.csv\"\ndf = pd.read_csv(url)\n\nprint(df.head())\nprint(df.info())\n\n                        name mfr type  calories  protein  fat  sodium  fiber  \\\n0                  100% Bran   N    C        70        4    1     130   10.0   \n1          100% Natural Bran   Q    C       120        3    5      15    2.0   \n2                   All-Bran   K    C        70        4    1     260    9.0   \n3  All-Bran with Extra Fiber   K    C        50        4    0     140   14.0   \n4             Almond Delight   R    C       110        2    2     200    1.0   \n\n   carbo  sugars  potass  vitamins  shelf  weight  cups     rating  \n0    5.0       6     280        25      3     1.0  0.33  68.402973  \n1    8.0       8     135         0      3     1.0  1.00  33.983679  \n2    7.0       5     320        25      3     1.0  0.33  59.425505  \n3    8.0       0     330        25      3     1.0  0.50  93.704912  \n4   14.0       8      -1        25      3     1.0  0.75  34.384843  \n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 77 entries, 0 to 76\nData columns (total 16 columns):\n #   Column    Non-Null Count  Dtype  \n---  ------    --------------  -----  \n 0   name      77 non-null     object \n 1   mfr       77 non-null     object \n 2   type      77 non-null     object \n 3   calories  77 non-null     int64  \n 4   protein   77 non-null     int64  \n 5   fat       77 non-null     int64  \n 6   sodium    77 non-null     int64  \n 7   fiber     77 non-null     float64\n 8   carbo     77 non-null     float64\n 9   sugars    77 non-null     int64  \n 10  potass    77 non-null     int64  \n 11  vitamins  77 non-null     int64  \n 12  shelf     77 non-null     int64  \n 13  weight    77 non-null     float64\n 14  cups      77 non-null     float64\n 15  rating    77 non-null     float64\ndtypes: float64(5), int64(8), object(3)\nmemory usage: 9.8+ KB\nNone"
-  },
-  {
-    "objectID": "notebooks/Exploration_02.html#part-2-calculate-summary-statistics",
-    "href": "notebooks/Exploration_02.html#part-2-calculate-summary-statistics",
-    "title": "Data Exploration 02",
-    "section": "Part 2: Calculate Summary Statistics",
-    "text": "Part 2: Calculate Summary Statistics\nThe marketing team has determined that when choosing a cereal, consumers are most interested in calories, sugars, fiber, fat, and protein.\nFirst, let’s calcuate some summary statistics for these categories across the entire dataset. We’re particularly intrested in the mean, median, standard deviation, min, and max values.\nThere are multiple ways to accomplish this.\n\n# Part 2: Enter your code below to calculate summary statistics for the\n# calories, sugars, fiber, fat, and protein features.\ntarget_cols = ['calories', 'sugars', 'fiber', 'fat', 'protein']\nsummary_stats = df[target_cols].describe().loc[['mean', '50%', 'std', 'min', 'max']]\n\nsummary_stats.rename(index={'50%': 'median'}, inplace=True)\nprint(summary_stats)\n\n          calories     sugars      fiber       fat   protein\nmean    106.883117   6.922078   2.151948  1.012987  2.545455\nmedian  110.000000   7.000000   2.000000  1.000000  3.000000\nstd      19.484119   4.444885   2.383364  1.006473  1.094790\nmin      50.000000  -1.000000   0.000000  0.000000  1.000000\nmax     160.000000  15.000000  14.000000  5.000000  6.000000"
-  },
-  {
-    "objectID": "notebooks/Exploration_02.html#part-3-transform-data",
-    "href": "notebooks/Exploration_02.html#part-3-transform-data",
-    "title": "Data Exploration 02",
-    "section": "Part 3: Transform Data",
-    "text": "Part 3: Transform Data\nTo make analysis easier, you want to convert the manufacturer codes used in the dataset to the manufacturer names.\nFirst, display the count of each manufacturer code value used in the dataset (found in the mfr column).\nThen, create a new column with the appropriate manufacturer name for each entry, using this mapping:\nA = American Home Food Products\nG = General Mills\nK = Kelloggs\nN = Nabisco\nP = Post\nQ = Quaker Oats\nR = Ralston Purina\n\nNote: While the tutorial linked above uses the replace function, using the map function instead can often be much faster and more memory efficient, especially for large datasets.\n\n\n# Display the count of values for the manufacturer code (\"mfr\" column), then\n# create a new column containing the appropriate manufacturer names.\nprint(df['mfr'].value_counts())\nmfr_map = {\n'A': 'American Home Food Products',\n'G': 'General Mills',\n'K': 'Kelloggs',\n'N': 'Nabisco',\n'P': 'Post',\n'Q': 'Quaker Oats',\n'R': 'Ralston Purina'\n}\n\ndf['manufacturer_name'] = df['mfr'].map(mfr_map)\nprint(df[['mfr', 'manufacturer_name']].head())\n\nmfr\nK    23\nG    22\nP     9\nR     8\nQ     8\nN     6\nA     1\nName: count, dtype: int64\n  mfr manufacturer_name\n0   N           Nabisco\n1   Q       Quaker Oats\n2   K          Kelloggs\n3   K          Kelloggs\n4   R    Ralston Purina"
-  },
-  {
-    "objectID": "notebooks/Exploration_02.html#part-4-visualization",
-    "href": "notebooks/Exploration_02.html#part-4-visualization",
-    "title": "Data Exploration 02",
-    "section": "Part 4: Visualization",
-    "text": "Part 4: Visualization\nLet’s do some more data exploration visually.\nImport your visualization library of choice and set any needed configuration options.\n\n# Import your visualization library\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n\nSugar Distribution\nMarketing tells us that their surveys have revealed that sugar content is the number one concern of consumers when choosing cereal.\nThey would like to see the following visualizations:\n\nA histogram plot of the sugar content in all cereals.\nA scatter plot showing the relationship between sugar and calories.\nA box plot showing the distribution of sugar content by manufacturer.\n\n\n# Create the three visualzations requested by the the marketing team\nplt.figure(figsize=(10, 4))\nsns.histplot(df['sugars'], bins=10, kde=True)\nplt.title('Distribution of Sugar Content')\nplt.xlabel('Sugar (g)')\nplt.show()\n\nplt.figure(figsize=(10, 6))\nsns.scatterplot(data=df, x='sugars', y='calories')\nplt.title('Relationship between Sugar and Calories')\nplt.xlabel('Sugar (g)')\nplt.ylabel('Calories')\nplt.show()\n\nplt.figure(figsize=(12, 6))\nsns.boxplot(data=df, x='manufacturer_name', y='sugars')\nplt.xticks(rotation=45)\nplt.title('Sugar Content Distribution by Manufacturer')\nplt.show()"
-  },
-  {
-    "objectID": "notebooks/Exploration_02.html#above-and-beyond",
-    "href": "notebooks/Exploration_02.html#above-and-beyond",
-    "title": "Data Exploration 02",
-    "section": "🌟 Above and Beyond 🌟",
-    "text": "🌟 Above and Beyond 🌟\nThe marketing team is pleased with what you’ve accomplished so far. They have a meeting with top cereal executives in the morning, and they’d like you to do as many of the following additional tasks as you have time for:\n\nWeight Watchers used to have an older points system that used this formula: (calories / 50) + (fat / 12) - (fiber / 5), but only the first 4 grams of fiber were included in the calculation. For comparison’s sake, create an additional column with the calculation for the old points system.\nMarketing really likes the boxplot of the sugar content for each cereal, they’d like similar plots for calories and fat, but using different color schemes for each chart."
-  },
-  {
-    "objectID": "Story_Telling/project2.html",
-    "href": "Story_Telling/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project1.html",
-    "href": "Story_Telling/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project4.html",
-    "href": "Story_Telling/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project3.html",
-    "href": "Full_Stack/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project5.html",
-    "href": "Full_Stack/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics"
-  },
-  {
-    "objectID": "index.html#title-2-header",
-    "href": "index.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project2.html",
-    "href": "Cleansing_Exploration/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project1.html",
-    "href": "Cleansing_Exploration/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project4.html",
-    "href": "Cleansing_Exploration/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "competition.html",
-    "href": "competition.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Competition"
-    ]
-  },
-  {
-    "objectID": "competition.html#title-2-header",
-    "href": "competition.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Competition"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project2.html",
-    "href": "Machine_Learning/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project1.html",
-    "href": "Machine_Learning/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project4.html",
-    "href": "Machine_Learning/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "cleansing.html",
-    "href": "cleansing.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Cleansing"
-    ]
-  },
-  {
-    "objectID": "cleansing.html#title-2-header",
-    "href": "cleansing.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Cleansing"
-    ]
-  },
-  {
-    "objectID": "Competition/project3.html",
-    "href": "Competition/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Competition/project5.html",
-    "href": "Competition/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 5"
     ]
   },
   {
@@ -318,25 +185,36 @@
     "text": "Jul 2026 - Aug 2026 (Planned) Internship, Japan\nMar 2024 Ube National College of Technology\nCompleted Associate Degree program"
   },
   {
-    "objectID": "Competition/project4.html",
-    "href": "Competition/project4.html",
+    "objectID": "Story_Telling/project1.html",
+    "href": "Story_Telling/project1.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Competition",
-      "Project 4"
+      "Story Telling",
+      "Project 1"
     ]
   },
   {
-    "objectID": "Competition/project1.html",
-    "href": "Competition/project1.html",
+    "objectID": "Story_Telling/project5.html",
+    "href": "Story_Telling/project5.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Competition",
-      "Project 1"
+      "Story Telling",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project3.html",
+    "href": "Story_Telling/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 3"
     ]
   },
   {
@@ -351,23 +229,25 @@
     ]
   },
   {
-    "objectID": "full_stack.html",
-    "href": "full_stack.html",
-    "title": "about me",
+    "objectID": "Competition/project4.html",
+    "href": "Competition/project4.html",
+    "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Full Stack"
+      "Competition",
+      "Project 4"
     ]
   },
   {
-    "objectID": "full_stack.html#title-2-header",
-    "href": "full_stack.html#title-2-header",
-    "title": "about me",
+    "objectID": "Machine_Learning/project1.html",
+    "href": "Machine_Learning/project1.html",
+    "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Full Stack"
+      "Machine Learning",
+      "Project 1"
     ]
   },
   {
@@ -390,6 +270,68 @@
     "crumbs": [
       "Machine Learning",
       "Project 3"
+    ]
+  },
+  {
+    "objectID": "starter_bank_ipynb.html",
+    "href": "starter_bank_ipynb.html",
+    "title": "Riku_Nakamura - Data Science Portfolio",
+    "section": "",
+    "text": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport pickle\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report, confusion_matrix\n\n\ntrain_data = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bank.csv')\nholdout_data = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bank_holdout_test.csv')\n\n\ntrain_data['y'] = train_data['y'].map({'yes': 1, 'no': 0})\n\n\ncampaign_impact = train_data.groupby('campaign')['y'].mean()\nprint(\"\\nConversion Rate by Campaign Contacts:\")\nprint(campaign_impact.head(6))\nprint(\"\\nConversion Rate by Day of Week:\")\nprint(train_data.groupby('day_of_week')['y'].mean().sort_values(ascending=False))\nprint(\"\\nStudent Conversion Rate:\", train_data[train_data['job'] == 'student']['y'].mean())\nprint(\"Overall Conversion Rate:\", train_data['y'].mean())\n\n\nConversion Rate by Campaign Contacts:\ncampaign\n1    0.131347\n2    0.113879\n3    0.110325\n4    0.095038\n5    0.076117\n6    0.078363\nName: y, dtype: float64\n\nConversion Rate by Day of Week:\nday_of_week\nthu    0.123741\nwed    0.117735\ntue    0.117607\nfri    0.109011\nmon    0.099386\nName: y, dtype: float64\n\nStudent Conversion Rate: 0.31399747793190413\nOverall Conversion Rate: 0.11351803393671261\n\n\n\ndef preprocess_features(df):\n    df_copy = df.copy()\n\n    # [Condition Met] Binning age to reduce complexity\n    df_copy['age_binned'] = pd.cut(df_copy['age'], bins=[0, 25, 60, 100], labels=['young', 'adult', 'senior'])\n    df_copy = df_copy.drop('age', axis=1)\n\n    # [Condition Met] Binning economic indicators (Beatriz's request)\n    df_copy['conf_idx_binned'] = pd.qcut(df_copy['cons.conf.idx'], q=3, labels=['Low', 'Medium', 'High'])\n    df_copy = df_copy.drop('cons.conf.idx', axis=1)\n\n    return df_copy\nX_raw = train_data.drop('y', axis=1)\nX_processed = preprocess_features(X_raw)\ny = train_data['y']\n\nX = pd.get_dummies(X_processed, drop_first=True)\n\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n\n\nmodel = RandomForestClassifier(n_estimators=100, max_depth=10, class_weight='balanced', random_state=42)\nmodel.fit(X_train, y_train)\n\ny_pred = model.predict(X_test)\nprint(\"\\n--- Internal Test Results ---\")\nprint(confusion_matrix(y_test, y_pred))\nprint(classification_report(y_test, y_pred))\n\n\n--- Internal Test Results ---\n[[5750  778]\n [ 332  554]]\n              precision    recall  f1-score   support\n\n           0       0.95      0.88      0.91      6528\n           1       0.42      0.63      0.50       886\n\n    accuracy                           0.85      7414\n   macro avg       0.68      0.75      0.71      7414\nweighted avg       0.88      0.85      0.86      7414\n\n\n\n\nwith open('bank_model.pkl', 'wb') as f:\n    pickle.dump(model, f, protocol=5)\nprint(\"\\nbank_model.pkl saved using protocol version 5.\")\n\n\nbank_model.pkl saved using protocol version 5.\n\n\n\nholdout_processed = preprocess_features(holdout_data)\nholdout_final = pd.get_dummies(holdout_processed, drop_first=True)\nholdout_final = holdout_final.reindex(columns=X.columns, fill_value=0)\n\nholdout_predictions = model.predict(holdout_final)\n\n\nmy_predictions = pd.DataFrame(holdout_predictions, columns=['predictions'])\n\n\nfilename = \"team4-module2-predictions.csv\"\nmy_predictions.to_csv(filename, index=False)\n\n\nplt.figure(figsize=(10, 6))\nfeat_importances = pd.Series(model.feature_importances_, index=X.columns)\nfeat_importances.nlargest(10).plot(kind='barh', color='skyblue')\nplt.title(\"Top 10 Most Influential Factors for Subscription\")\nplt.xlabel(\"Importance Score\")\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\nplt.figure(figsize=(10, 5))\ncampaign_plot_data = train_data.groupby('campaign')['y'].mean().head(10)\nsns.barplot(x=campaign_plot_data.index, y=campaign_plot_data.values, palette=\"Reds_r\")\nplt.axhline(train_data['y'].mean(), color='black', linestyle='--', label='Overall Avg')\nplt.title(\"Conversion Rate Drops as Contact Frequency Increases\")\nplt.ylabel(\"Success Rate\")\nplt.legend()\nplt.show()\n\n/tmp/ipykernel_13595/1923856096.py:3: FutureWarning: \n\nPassing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.\n\n  sns.barplot(x=campaign_plot_data.index, y=campaign_plot_data.values, palette=\"Reds_r\")\n\n\n\n\n\n\n\n\n\n\nplt.figure(figsize=(10, 5))\nday_order = ['mon', 'tue', 'wed', 'thu', 'fri']\nday_plot_data = train_data.groupby('day_of_week')['y'].mean().reindex(day_order)\nsns.barplot(x=day_plot_data.index, y=day_plot_data.values, palette=\"viridis\")\nplt.title(\"Conversion Rate by Day of the Week (Thursday is Peak)\")\nplt.ylabel(\"Success Rate\")\nplt.show()\n\n/tmp/ipykernel_13595/3184915913.py:4: FutureWarning: \n\nPassing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.\n\n  sns.barplot(x=day_plot_data.index, y=day_plot_data.values, palette=\"viridis\")\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Projects/project2.html",
+    "href": "Cleansing_Projects/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project4.html",
+    "href": "Cleansing_Projects/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project3.html",
+    "href": "Cleansing_Projects/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project5.html",
+    "href": "Cleansing_Projects/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project1.html",
+    "href": "Cleansing_Projects/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 1"
     ]
   },
   {
@@ -421,38 +363,95 @@
     "text": "Problem Group 3\nFor the questions in this group, you’ll work with the Titanic Dataset found at this url: https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/titanic.csv\n\nQuestion 6\nAfter loading the dataset into a pandas DataFrame, create a new column called NameGroup that contains the first letter of the passenger’s surname in lower case.\nNote that in the dataset, passenger’s names are provided in the Name column and are listed as:\nSurname, Given names\nFor example, if a passenger’s Name is Braund, Mr. Owen Harris, the NameGroup column should contain the value b.\nThen count how many passengers have a NameGroup value of k.\n\ntitanic_url = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/titanic.csv\"\ndf_titanic = pd.read_csv(titanic_url)\n\n# Create NameGroup column containing the first letter of the surname in lowercase\n# The format is \"Surname, Given names\" so we split by comma and take the first character\ndf_titanic['NameGroup'] = df_titanic['Name'].str.split(',').str[0].str[0].str.lower()\n\n# Count how many passengers have a NameGroup value of 'k'\nk_count = df_titanic[df_titanic['NameGroup'] == 'k'].shape[0]\nprint(f\"Number of passengers in NameGroup 'k': {k_count}\")\n\nNumber of passengers in NameGroup 'k': 28"
   },
   {
-    "objectID": "exploration.html",
-    "href": "exploration.html",
-    "title": "about me",
+    "objectID": "Machine_Learning/project4.html",
+    "href": "Machine_Learning/project4.html",
+    "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Data Exploration"
+      "Machine Learning",
+      "Project 4"
     ]
   },
   {
-    "objectID": "exploration.html#title-2-header",
-    "href": "exploration.html#title-2-header",
-    "title": "about me",
+    "objectID": "Machine_Learning/project2.html",
+    "href": "Machine_Learning/project2.html",
+    "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Data Exploration"
+      "Machine Learning",
+      "Project 2"
     ]
   },
   {
-    "objectID": "Cleansing_Exploration/project5.html",
-    "href": "Cleansing_Exploration/project5.html",
+    "objectID": "Competition/project3.html",
+    "href": "Competition/project3.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 3"
+    ]
   },
   {
-    "objectID": "Cleansing_Exploration/project3.html",
-    "href": "Cleansing_Exploration/project3.html",
+    "objectID": "Competition/project5.html",
+    "href": "Competition/project5.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Competition/project1.html",
+    "href": "Competition/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project4.html",
+    "href": "Story_Telling/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project2.html",
+    "href": "Story_Telling/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
+  },
+  {
+    "objectID": "index.html#title-2-header",
+    "href": "index.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
   },
   {
     "objectID": "ml.html",
@@ -475,59 +474,80 @@
     ]
   },
   {
-    "objectID": "Full_Stack/project4.html",
-    "href": "Full_Stack/project4.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "cleansing.html",
+    "href": "cleansing.html",
+    "title": "about me",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "MarkDown Basics",
     "crumbs": [
-      "Full Stack",
-      "Project 4"
+      "Data Cleansing"
     ]
   },
   {
-    "objectID": "Full_Stack/project1.html",
-    "href": "Full_Stack/project1.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "cleansing.html#title-2-header",
+    "href": "cleansing.html#title-2-header",
+    "title": "about me",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "MarkDown Basics",
     "crumbs": [
-      "Full Stack",
-      "Project 1"
+      "Data Cleansing"
     ]
   },
   {
-    "objectID": "Full_Stack/project2.html",
-    "href": "Full_Stack/project2.html",
+    "objectID": "Cleansing_Exploration/project4.html",
+    "href": "Cleansing_Exploration/project4.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 2"
-    ]
+    "text": "Paste in a template\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "Story_Telling/project5.html",
-    "href": "Story_Telling/project5.html",
+    "objectID": "Cleansing_Exploration/project2.html",
+    "href": "Cleansing_Exploration/project2.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 5"
-    ]
+    "text": "Paste in a template\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "Story_Telling/project3.html",
-    "href": "Story_Telling/project3.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "notebooks/Exploration_02.html",
+    "href": "notebooks/Exploration_02.html",
+    "title": "Data Exploration 02",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 3"
-    ]
+    "text": "You’re working as a data analyst at a cereal marketing company in New York.\nIn a strategy meeting, the marketing director tells you that in 2018, the US weight loss industry was worth over $72 Billion dollars, growing 4% compared to the previous year.\nIn contrast, sales of cold cereal fell 6% to $8.5 billion during the same time period.\nCereal executives have approached the marketing company asking how they can somehow tap into the weight loss market growth to boost the sales of their cereal brands.\nYour assignment is to analyze a dataset of nutritional information for major US cereals, and calculate some metrics that can be used by the marketing team."
+  },
+  {
+    "objectID": "notebooks/Exploration_02.html#part-1-import-pandas-and-load-the-data",
+    "href": "notebooks/Exploration_02.html#part-1-import-pandas-and-load-the-data",
+    "title": "Data Exploration 02",
+    "section": "Part 1: Import Pandas and load the data",
+    "text": "Part 1: Import Pandas and load the data\nRemember to import Pandas the conventional way. If you’ve forgotten how, you may want to review Data Exploration 01.\nThe dataset for this exploration is stored at the following url:\nhttps://raw.githubusercontent.com/byui-cse/cse450-course/master/data/cereal.csv\nThere are lots of ways to load data into your workspace. The easiest way in this case is to ask Pandas to do it for you.\n\nInitial Data Analysis\nOnce you’ve loaded the data, it’s a good idea to poke around a little bit to find out what you’re dealing with.\nSome questions you might ask include:\n\nWhat does the data look like?\nWhat kind of data is in each column?\nDo any of the columns have missing values?\n\n\n# Part 1: Enter your code below to import Pandas according to the\n# conventional method. Then load the dataset into a Pandas dataframe.\n\n# Write any code needed to explore the data by seeing what the first few\n# rows look like. Then display a technical summary of the data to determine\n# the data types of each column, and which columns have missing data.\nimport pandas as pd\n\nurl = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/cereal.csv\"\ndf = pd.read_csv(url)\n\nprint(df.head())\nprint(df.info())\n\n                        name mfr type  calories  protein  fat  sodium  fiber  \\\n0                  100% Bran   N    C        70        4    1     130   10.0   \n1          100% Natural Bran   Q    C       120        3    5      15    2.0   \n2                   All-Bran   K    C        70        4    1     260    9.0   \n3  All-Bran with Extra Fiber   K    C        50        4    0     140   14.0   \n4             Almond Delight   R    C       110        2    2     200    1.0   \n\n   carbo  sugars  potass  vitamins  shelf  weight  cups     rating  \n0    5.0       6     280        25      3     1.0  0.33  68.402973  \n1    8.0       8     135         0      3     1.0  1.00  33.983679  \n2    7.0       5     320        25      3     1.0  0.33  59.425505  \n3    8.0       0     330        25      3     1.0  0.50  93.704912  \n4   14.0       8      -1        25      3     1.0  0.75  34.384843  \n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 77 entries, 0 to 76\nData columns (total 16 columns):\n #   Column    Non-Null Count  Dtype  \n---  ------    --------------  -----  \n 0   name      77 non-null     object \n 1   mfr       77 non-null     object \n 2   type      77 non-null     object \n 3   calories  77 non-null     int64  \n 4   protein   77 non-null     int64  \n 5   fat       77 non-null     int64  \n 6   sodium    77 non-null     int64  \n 7   fiber     77 non-null     float64\n 8   carbo     77 non-null     float64\n 9   sugars    77 non-null     int64  \n 10  potass    77 non-null     int64  \n 11  vitamins  77 non-null     int64  \n 12  shelf     77 non-null     int64  \n 13  weight    77 non-null     float64\n 14  cups      77 non-null     float64\n 15  rating    77 non-null     float64\ndtypes: float64(5), int64(8), object(3)\nmemory usage: 9.8+ KB\nNone"
+  },
+  {
+    "objectID": "notebooks/Exploration_02.html#part-2-calculate-summary-statistics",
+    "href": "notebooks/Exploration_02.html#part-2-calculate-summary-statistics",
+    "title": "Data Exploration 02",
+    "section": "Part 2: Calculate Summary Statistics",
+    "text": "Part 2: Calculate Summary Statistics\nThe marketing team has determined that when choosing a cereal, consumers are most interested in calories, sugars, fiber, fat, and protein.\nFirst, let’s calcuate some summary statistics for these categories across the entire dataset. We’re particularly intrested in the mean, median, standard deviation, min, and max values.\nThere are multiple ways to accomplish this.\n\n# Part 2: Enter your code below to calculate summary statistics for the\n# calories, sugars, fiber, fat, and protein features.\ntarget_cols = ['calories', 'sugars', 'fiber', 'fat', 'protein']\nsummary_stats = df[target_cols].describe().loc[['mean', '50%', 'std', 'min', 'max']]\n\nsummary_stats.rename(index={'50%': 'median'}, inplace=True)\nprint(summary_stats)\n\n          calories     sugars      fiber       fat   protein\nmean    106.883117   6.922078   2.151948  1.012987  2.545455\nmedian  110.000000   7.000000   2.000000  1.000000  3.000000\nstd      19.484119   4.444885   2.383364  1.006473  1.094790\nmin      50.000000  -1.000000   0.000000  0.000000  1.000000\nmax     160.000000  15.000000  14.000000  5.000000  6.000000"
+  },
+  {
+    "objectID": "notebooks/Exploration_02.html#part-3-transform-data",
+    "href": "notebooks/Exploration_02.html#part-3-transform-data",
+    "title": "Data Exploration 02",
+    "section": "Part 3: Transform Data",
+    "text": "Part 3: Transform Data\nTo make analysis easier, you want to convert the manufacturer codes used in the dataset to the manufacturer names.\nFirst, display the count of each manufacturer code value used in the dataset (found in the mfr column).\nThen, create a new column with the appropriate manufacturer name for each entry, using this mapping:\nA = American Home Food Products\nG = General Mills\nK = Kelloggs\nN = Nabisco\nP = Post\nQ = Quaker Oats\nR = Ralston Purina\n\nNote: While the tutorial linked above uses the replace function, using the map function instead can often be much faster and more memory efficient, especially for large datasets.\n\n\n# Display the count of values for the manufacturer code (\"mfr\" column), then\n# create a new column containing the appropriate manufacturer names.\nprint(df['mfr'].value_counts())\nmfr_map = {\n'A': 'American Home Food Products',\n'G': 'General Mills',\n'K': 'Kelloggs',\n'N': 'Nabisco',\n'P': 'Post',\n'Q': 'Quaker Oats',\n'R': 'Ralston Purina'\n}\n\ndf['manufacturer_name'] = df['mfr'].map(mfr_map)\nprint(df[['mfr', 'manufacturer_name']].head())\n\nmfr\nK    23\nG    22\nP     9\nR     8\nQ     8\nN     6\nA     1\nName: count, dtype: int64\n  mfr manufacturer_name\n0   N           Nabisco\n1   Q       Quaker Oats\n2   K          Kelloggs\n3   K          Kelloggs\n4   R    Ralston Purina"
+  },
+  {
+    "objectID": "notebooks/Exploration_02.html#part-4-visualization",
+    "href": "notebooks/Exploration_02.html#part-4-visualization",
+    "title": "Data Exploration 02",
+    "section": "Part 4: Visualization",
+    "text": "Part 4: Visualization\nLet’s do some more data exploration visually.\nImport your visualization library of choice and set any needed configuration options.\n\n# Import your visualization library\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n\nSugar Distribution\nMarketing tells us that their surveys have revealed that sugar content is the number one concern of consumers when choosing cereal.\nThey would like to see the following visualizations:\n\nA histogram plot of the sugar content in all cereals.\nA scatter plot showing the relationship between sugar and calories.\nA box plot showing the distribution of sugar content by manufacturer.\n\n\n# Create the three visualzations requested by the the marketing team\nplt.figure(figsize=(10, 4))\nsns.histplot(df['sugars'], bins=10, kde=True)\nplt.title('Distribution of Sugar Content')\nplt.xlabel('Sugar (g)')\nplt.show()\n\nplt.figure(figsize=(10, 6))\nsns.scatterplot(data=df, x='sugars', y='calories')\nplt.title('Relationship between Sugar and Calories')\nplt.xlabel('Sugar (g)')\nplt.ylabel('Calories')\nplt.show()\n\nplt.figure(figsize=(12, 6))\nsns.boxplot(data=df, x='manufacturer_name', y='sugars')\nplt.xticks(rotation=45)\nplt.title('Sugar Content Distribution by Manufacturer')\nplt.show()"
+  },
+  {
+    "objectID": "notebooks/Exploration_02.html#above-and-beyond",
+    "href": "notebooks/Exploration_02.html#above-and-beyond",
+    "title": "Data Exploration 02",
+    "section": "🌟 Above and Beyond 🌟",
+    "text": "🌟 Above and Beyond 🌟\nThe marketing team is pleased with what you’ve accomplished so far. They have a meeting with top cereal executives in the morning, and they’d like you to do as many of the following additional tasks as you have time for:\n\nWeight Watchers used to have an older points system that used this formula: (calories / 50) + (fat / 12) - (fiber / 5), but only the first 4 grams of fiber were included in the calculation. For comparison’s sake, create an additional column with the calculation for the old points system.\nMarketing really likes the boxplot of the sugar content for each cereal, they’d like similar plots for calories and fat, but using different color schemes for each chart."
   },
   {
     "objectID": "notebooks/Exploration_01.html#mpaa-movie-ratings",
@@ -572,78 +592,65 @@
     "text": "🌟 Above and Beyond 🌟\nAfter reviewing your findings, the watchdog group would like some additional questions answered:\n\nHow are things affected if you include the “made for TV movies” that have been assigned TV ratings in your analysis, but still exclude unrated movies?\nThey would also like to see a separate report that includes only TV shows.\nFor an upcoming community meeting, the group would like to present a simple chart showing “For Kids” and “For Adults” categories. The easiest way to accomplish this would be to create a new column in your data frame that maps each rating to the appropriate “For Kids” or “For Adults” label, then create a new visualization based on that column."
   },
   {
-    "objectID": "notebooks/Exploration_01_Polars.html#mpaa-movie-ratings",
-    "href": "notebooks/Exploration_01_Polars.html#mpaa-movie-ratings",
-    "title": "Data Exploration 01",
-    "section": "MPAA Movie Ratings:",
-    "text": "MPAA Movie Ratings:\n\nG: All ages admitted.\nPG: Some material may not be suitable for children.\nPG-13: Some material may be inappropriate for children under 13.\nR: Under 17 requires accompanying parent or adult guardian\nNC-17: No One 17 and Under Admitted\n\nMost people would consider G and PG as ratings suitable for children. However, not everyone would agree that a PG-13 movie is necssarily a children’s movie. It is up to you to decide how to handle this."
+    "objectID": "exploration.html",
+    "href": "exploration.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Exploration"
+    ]
   },
   {
-    "objectID": "notebooks/Exploration_01_Polars.html#part-1-import-polars",
-    "href": "notebooks/Exploration_01_Polars.html#part-1-import-polars",
-    "title": "Data Exploration 01",
-    "section": "Part 1: Import Polars",
-    "text": "Part 1: Import Polars\nThe polars library is a python library used for data analysis and manipulation. It will provide the core functionality for most of what you do in the data exploration and preprocessing stages of most machine learning projects.\nPlease see this Getting Started Guide for information on the conventional way to import Polars into your project, as well as other helpful tips for common Polars tasks.\n\n# Part 1: Enter the code below to import Polars according to the\n# conventional method.\nimport polars as pl"
+    "objectID": "exploration.html#title-2-header",
+    "href": "exploration.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Exploration"
+    ]
   },
   {
-    "objectID": "notebooks/Exploration_01_Polars.html#part-2-load-the-data",
-    "href": "notebooks/Exploration_01_Polars.html#part-2-load-the-data",
-    "title": "Data Exploration 01",
-    "section": "Part 2: Load the data",
-    "text": "Part 2: Load the data\nThe dataset for this exploration is stored at the following url:\nhttps://raw.githubusercontent.com/byui-cse/cse450-course/master/data/netflix_titles.csv\nThere are lots of ways to load data into your workspace. The easiest way in this case is to ask Polars to do it for you.\n\nInitial Data Analysis\nOnce you’ve loaded the data, it’s a good idea to poke around a little bit to find out what you’re dealing with.\nSome questions you might ask include:\n\nWhat does the data look like?\nWhat kind of data is in each column?\nDo any of the columns have missing values?\n\n\n# Part 2: Load the dataset into a Polars dataframe.\nurl = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/netflix_titles.csv\"\ndf = pl.read_csv(url)\n\n\n# Then, explore the data by seeing what the first few rows look like.\nprint(df.head())\n\nshape: (5, 12)\n┌──────────┬─────────┬────────────┬────────────┬───┬──────────┬──────────┬────────────┬────────────┐\n│ show_id  ┆ type    ┆ title      ┆ director   ┆ … ┆ rating   ┆ duration ┆ listed_in  ┆ descriptio │\n│ ---      ┆ ---     ┆ ---        ┆ ---        ┆   ┆ ---      ┆ ---      ┆ ---        ┆ n          │\n│ i64      ┆ str     ┆ str        ┆ str        ┆   ┆ str      ┆ str      ┆ str        ┆ ---        │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ str        │\n╞══════════╪═════════╪════════════╪════════════╪═══╪══════════╪══════════╪════════════╪════════════╡\n│ 81145628 ┆ Movie   ┆ Norm of    ┆ Richard    ┆ … ┆ TV-PG    ┆ 90 min   ┆ Children & ┆ Before     │\n│          ┆         ┆ the North: ┆ Finn, Tim  ┆   ┆          ┆          ┆ Family     ┆ planning   │\n│          ┆         ┆ King Sized ┆ Maltby     ┆   ┆          ┆          ┆ Movies,    ┆ an awesome │\n│          ┆         ┆ …          ┆            ┆   ┆          ┆          ┆ Come…      ┆ wed…       │\n│ 80117401 ┆ Movie   ┆ Jandino:   ┆ null       ┆ … ┆ TV-MA    ┆ 94 min   ┆ Stand-Up   ┆ Jandino    │\n│          ┆         ┆ Whatever   ┆            ┆   ┆          ┆          ┆ Comedy     ┆ Asporaat   │\n│          ┆         ┆ it Takes   ┆            ┆   ┆          ┆          ┆            ┆ riffs on   │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ the …      │\n│ 70234439 ┆ TV Show ┆ Transforme ┆ null       ┆ … ┆ TV-Y7-FV ┆ 1 Season ┆ Kids' TV   ┆ With the   │\n│          ┆         ┆ rs Prime   ┆            ┆   ┆          ┆          ┆            ┆ help of    │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ three      │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ human a…   │\n│ 80058654 ┆ TV Show ┆ Transforme ┆ null       ┆ … ┆ TV-Y7    ┆ 1 Season ┆ Kids' TV   ┆ When a     │\n│          ┆         ┆ rs: Robots ┆            ┆   ┆          ┆          ┆            ┆ prison     │\n│          ┆         ┆ in Disgui… ┆            ┆   ┆          ┆          ┆            ┆ ship crash │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ unlea…     │\n│ 80125979 ┆ Movie   ┆ #realityhi ┆ Fernando   ┆ … ┆ TV-14    ┆ 99 min   ┆ Comedies   ┆ When nerdy │\n│          ┆         ┆ gh         ┆ Lebrija    ┆   ┆          ┆          ┆            ┆ high       │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ schooler   │\n│          ┆         ┆            ┆            ┆   ┆          ┆          ┆            ┆ Dani …     │\n└──────────┴─────────┴────────────┴────────────┴───┴──────────┴──────────┴────────────┴────────────┘\n\n\n\n# Next, display a technical summary of the data to determine the data types of each column, and which columns have missing data.\nprint(df.schema)\nprint(df.null_count())\n\nSchema({'show_id': Int64, 'type': String, 'title': String, 'director': String, 'cast': String, 'country': String, 'date_added': String, 'release_year': Int64, 'rating': String, 'duration': String, 'listed_in': String, 'description': String})\nshape: (1, 12)\n┌─────────┬──────┬───────┬──────────┬───┬────────┬──────────┬───────────┬─────────────┐\n│ show_id ┆ type ┆ title ┆ director ┆ … ┆ rating ┆ duration ┆ listed_in ┆ description │\n│ ---     ┆ ---  ┆ ---   ┆ ---      ┆   ┆ ---    ┆ ---      ┆ ---       ┆ ---         │\n│ u32     ┆ u32  ┆ u32   ┆ u32      ┆   ┆ u32    ┆ u32      ┆ u32       ┆ u32         │\n╞═════════╪══════╪═══════╪══════════╪═══╪════════╪══════════╪═══════════╪═════════════╡\n│ 0       ┆ 0    ┆ 0     ┆ 1969     ┆ … ┆ 10     ┆ 0        ┆ 0         ┆ 0           │\n└─────────┴──────┴───────┴──────────┴───┴────────┴──────────┴───────────┴─────────────┘"
-  },
-  {
-    "objectID": "notebooks/Exploration_01_Polars.html#part-3-filter-the-data",
-    "href": "notebooks/Exploration_01_Polars.html#part-3-filter-the-data",
-    "title": "Data Exploration 01",
-    "section": "Part 3: Filter the Data",
-    "text": "Part 3: Filter the Data\nSince we’re just interested in movies, we’ll need to filter out anything that isn’t a movie for our analysis. The type feature contains this information.\nOnce we have the subset, we should see how many rows it contains. There are a variety of ways to get the length of a data frame.\n\n# Use polars's filtering abilitites to select the subset of data\n# that represents movies, then calculate how many rows are in the filtered data.\nmovies = df.filter(pl.col(\"type\") == \"Movie\")\n\n\nMPAA Ratings\nNow that we have only movies, let’s get a quick count of the values being used in the rating feature.\n\n# Determine the number of records for each value of the \"rating\" feature.\n# Remember to count the values in your subset only, not in the original dataframe.\nprint(f\"Number of movies: {len(movies)}\")\nrating_counts = movies.group_by(\"rating\").count().sort(\"count\", descending=True)\nprint(rating_counts)\n\nNumber of movies: 4265\nshape: (15, 2)\n┌──────────┬───────┐\n│ rating   ┆ count │\n│ ---      ┆ ---   │\n│ str      ┆ u32   │\n╞══════════╪═══════╡\n│ TV-MA    ┆ 1348  │\n│ TV-14    ┆ 1038  │\n│ R        ┆ 506   │\n│ TV-PG    ┆ 432   │\n│ PG-13    ┆ 286   │\n│ …        ┆ …     │\n│ G        ┆ 36    │\n│ TV-Y7-FV ┆ 27    │\n│ null     ┆ 8     │\n│ UR       ┆ 7     │\n│ NC-17    ┆ 2     │\n└──────────┴───────┘\n\n\n/tmp/ipykernel_15519/129873251.py:4: DeprecationWarning: `GroupBy.count` was renamed; use `GroupBy.len` instead\n  rating_counts = movies.group_by(\"rating\").count().sort(\"count\", descending=True)\n\n\n\n\nMore Filtering\nThere are apparently some “made for TV” movies in the list that don’t fit the MPAA rating scheme.\nLet’s filter some more to just see movies rated with the standard MPAA ratings of G, PG, PG-13, R, and NC-17.\n\n# Filter the list of movies to select a new subset containing only movies with\n# a standard MPAA rating. Calculate how many rows are in this new set, and\n# then see which ratings appear most often.\nmpaa_ratings = [\"G\", \"PG\", \"PG-13\", \"R\", \"NC-17\"]\nmpaa_movies = movies.filter(pl.col(\"rating\").is_in(mpaa_ratings))\nprint(f\"Number of MPAA rated movies: {len(mpaa_movies)}\")\n\nNumber of MPAA rated movies: 1013"
-  },
-  {
-    "objectID": "notebooks/Exploration_01_Polars.html#part-4-visualization",
-    "href": "notebooks/Exploration_01_Polars.html#part-4-visualization",
-    "title": "Data Exploration 01",
-    "section": "Part 4: Visualization",
-    "text": "Part 4: Visualization\nNow that we have explored and preprocessed our data, let’s create a visualization to summarize our findings.\n\nExploration vs Presentation\nBroadly speaking, there are two types of visualizations: * Barebones visualizations you might use to get a quick, visual understanding of the data while you’re trying to decide how it all fits together. * Presentation-quality visualizations that you would include in a report or presentation for management or other stakeholders.\n\n\nVisualization Tools\nThere are many different visualization tools availble. In the sections below, we’ll explore the three most common. Each of these libraries has strengths and weaknesses.\nIt is probably a good idea for you to become familiar with each one, and then become proficient at whichever one you like the best.\n\n\nLet’s Plot\nThe Let’s Plot visualization library uses a grammer of graphics to build up a chart piece by piece.\nAssume we have a polars dataframe called employees, with three columns: name, job, salary.\n# Make a box plot style categorical plot showing the distribution of salaries for each job:\nggplot(data=employees, aes(x='job', y='salary')) + geom_box()\n\n# Make a box plot style categorical plot, and customize the results\n(\n    ggplot(data=employees, aes(x='job', y='salary'))\n    + geom_boxplot()\n    + labs(\n        title='Salaries by Job Title'\n    )\n)\nDependencies need to be installed in colab to use Let’s Plot. Use %pip to install it. %pip install lets-plot will install the library, and skip it if it’s already installed.\n\n# Install the lets-plot module into this server\n%pip install lets-plot\n\nRequirement already satisfied: lets-plot in /usr/local/lib/python3.12/dist-packages (4.9.0)\nRequirement already satisfied: pypng in /usr/local/lib/python3.12/dist-packages (from lets-plot) (0.20220715.0)\nRequirement already satisfied: palettable in /usr/local/lib/python3.12/dist-packages (from lets-plot) (3.3.3)\nRequirement already satisfied: pillow in /usr/local/lib/python3.12/dist-packages (from lets-plot) (11.3.0)\n\n\nLike with Polars, there is a conventional way to import Let’s Plot into your projects.\n\n# Import the Let's Plot library the conventional way.\n%pip install lets-plot\nfrom lets_plot import *\nLetsPlot.setup_html()\n\nRequirement already satisfied: lets-plot in /usr/local/lib/python3.12/dist-packages (4.9.0)\nRequirement already satisfied: pypng in /usr/local/lib/python3.12/dist-packages (from lets-plot) (0.20220715.0)\nRequirement already satisfied: palettable in /usr/local/lib/python3.12/dist-packages (from lets-plot) (3.3.3)\nRequirement already satisfied: pillow in /usr/local/lib/python3.12/dist-packages (from lets-plot) (11.3.0)\n\n\nLet’s create a barchart showing the count of each movie rating by using Let’s Plot’s capabilities.\nIn this example, we see the x axis being set to a feature called species, and the y axis is a count of the number of rows for that species.\nIn our case, we want the x-axis to be set to rating.\n\n\nAltair\nThe Altair visualization library provides a large variety of very easy to use statistical charting tools.\nAltair uses a declarative language to build up charts piece by piece.\nAssume we have a pandas dataframe called employees, with three columns: name, job, salary.\n# Make a box plot style categorical plot showing the distribution of salaries for each job:\nalt.Chart(employees).mark_boxplot().encode(\n    x='job',\n    y='salary'\n)\n\n# Make a box plot style categorical plot, and customize the results\nalt.Chart(employees).mark_boxplot().encode(\n    alt.X('job', title='Job title'),\n    alt.Y('salary', title='Annual salary in thousands of $USD')\n).properties(\n  title='Salaries by Job Title'\n)\nLike with Polars, there is a conventional way to import Altair into your projects.\n\n# Import the Altair library the conventional way.\nimport altair as alt\n\nLet’s create a barchart showing the count of each movie rating by using Altair’s aggregation capabilities.\nIn this example, we see the x axis being set to a feature called a, and the y axis set to the average() of a feature called b.\nIn our case, we want the x axis to be set to rating and the y axis to be the count() of rating.\n\n# Use Altair to create a bar chart comparing the count of each movie rating\nchart = alt.Chart(mpaa_movies.to_pandas()).mark_bar().encode(\nx=alt.X('rating', sort=mpaa_ratings),\ny='count()'\n).properties(title='Movie Ratings (Altair)')\nchart.display()\n\n\n\n\n\n\n\n\n\nSeaborn\nWhile Altair uses a “declarative” syntax for building charts piece by piece, the Seaborn library provides a large variety of pre-made charts for common statistical needs.\nThese charts are divided into different categories. Each category has a high-level interface you can use for simplicity, and then a specific function for each chart that you can use if you need more control over how the chart looks.\nSeaborn uses matplotlib for its drawing, and the chart-specific functions each return a matplitlib axes object if you need additional customization.\nFor example, there are several different types of categorical plots in seaborn: bar plots, box plots, point plots, count plots, swarm plots, etc…\nEach of these plots can be accessed using the catplot function.\nAssume we have a pandas dataframe called employees, with three columns: name, job, salary.\n# Make a box plot style categorical plot showing the distribution of salaries for each job:\nsns.catplot(data=employees, x='job', y='salary', kind='box')\n\n# Make a swarm plot style categorical plot\nsns.catplot(data=employees, x='job', y='salary', kind='swarm')\nAlternatively, you can use the plot specific functions to give yourself more control over the output by using matplotlib functions:\n# Make a box plot style categorical plot, and customize the results\nimport matplotlib.pyplot as plt\n\nplt.figure(figsize=(12, 9))\nax = sns.boxplot(data=employees, x='job', y='salary')\nax.set_title(\"Salaries by Job Title\")\nax.set_ylabel(\"Annual salary in thousands of $USD\")\nax.set_xlabel(\"Job title\")\nLike with Polars, there is a conventional way to import Seaborn into your projects.\nOptionally, you may wish to set some default chart aesthetics by setting the chart style.\n\n# Import the seaborn library the conventional way. Then optionally configure\n# the default chart style.\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n\nSince the rating column uses categorical data, we need to use Seaborn’s categorical visualizations.\nIn particular, we want a “count plot” that will display a count of movie ratings.\n\n# Use seaborn to create a count plot comparing the count of each movie rating\nplt.figure(figsize=(10, 6))\nsns.countplot(data=mpaa_movies.to_pandas(), x='rating', order=mpaa_ratings)\nplt.title('Movie Ratings (Seaborn)')\nplt.show()"
-  },
-  {
-    "objectID": "notebooks/Exploration_01_Polars.html#above-and-beyond",
-    "href": "notebooks/Exploration_01_Polars.html#above-and-beyond",
-    "title": "Data Exploration 01",
-    "section": "🌟 Above and Beyond 🌟",
-    "text": "🌟 Above and Beyond 🌟\nAfter reviewing your findings, the watchdog group would like some additional questions answered:\n\nHow are things affected if you include the “made for TV movies” that have been assigned TV ratings in your analysis, but still exclude unrated movies?\nThey would also like to see a separate report that includes only TV shows.\nFor an upcoming community meeting, the group would like to present a simple chart showing “For Kids” and “For Adults” categories. The easiest way to accomplish this would be to create a new column in your data frame that maps each rating to the appropriate “For Kids” or “For Adults” label, then create a new visualization based on that column."
-  },
-  {
-    "objectID": "Cleansing_Projects/project4.html",
-    "href": "Cleansing_Projects/project4.html",
+    "objectID": "Full_Stack/project4.html",
+    "href": "Full_Stack/project4.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Data Cleansing",
+      "Full Stack",
       "Project 4"
     ]
   },
   {
-    "objectID": "Cleansing_Projects/project1.html",
-    "href": "Cleansing_Projects/project1.html",
+    "objectID": "Full_Stack/project2.html",
+    "href": "Full_Stack/project2.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Data Cleansing",
-      "Project 1"
+      "Full Stack",
+      "Project 2"
     ]
   },
   {
-    "objectID": "Cleansing_Projects/project2.html",
-    "href": "Cleansing_Projects/project2.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "competition.html",
+    "href": "competition.html",
+    "title": "about me",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "MarkDown Basics",
     "crumbs": [
-      "Data Cleansing",
-      "Project 2"
+      "Competition"
+    ]
+  },
+  {
+    "objectID": "competition.html#title-2-header",
+    "href": "competition.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Competition"
     ]
   }
 ]
