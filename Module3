@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyNRsqGwrKeMM5yYxgES2hv2",
+      "authorship_tag": "ABX9TyN7deVC8adQeBkf+H83Xu1l",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -40,7 +40,7 @@
       "metadata": {
         "id": "34RQFNRLcjep"
       },
-      "execution_count": 69,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -55,7 +55,7 @@
       "metadata": {
         "id": "4EOuR8EacjhH"
       },
-      "execution_count": 70,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -85,7 +85,7 @@
       "metadata": {
         "id": "vdX5y4XGdosY"
       },
-      "execution_count": 71,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -97,7 +97,7 @@
       "metadata": {
         "id": "3mwtSDSodo1J"
       },
-      "execution_count": 72,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -113,7 +113,7 @@
       "metadata": {
         "id": "cNF63v3acjjM"
       },
-      "execution_count": 73,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -139,7 +139,7 @@
         "id": "0wyXXVdtcjli",
         "outputId": "a920d6f3-59c3-49aa-8e59-5013714edeed"
       },
-      "execution_count": 74,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -611,7 +611,7 @@
       "metadata": {
         "id": "RhIw08bWd428"
       },
-      "execution_count": 75,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -631,7 +631,7 @@
         "id": "BcYU5bL_d49p",
         "outputId": "b8551bbf-8f3b-4fc4-e8b3-1285f72d702e"
       },
-      "execution_count": 76,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -660,17 +660,19 @@
         "plt.title('Top 10 Property Features Driving House Prices (Prepared for VP of Finance)', fontsize=14)\n",
         "plt.xlabel('Relative Importance Score', fontsize=12)\n",
         "plt.ylabel('Property Feature', fontsize=12)\n",
-        "plt.tight_layout()"
+        "plt.tight_layout()\n",
+        "plt.savefig('executive_feature_importance.png') # Save the plot as a PNG file\n",
+        "plt.show() # Display the plot"
       ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 463
+          "height": 716
         },
         "id": "-w-CA7Red5HN",
         "outputId": "592fce30-690b-4af5-ec77-0b3601f071cb"
       },
-      "execution_count": 77,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -714,7 +716,7 @@
       "metadata": {
         "id": "ysJ9EIb_d_Ue"
       },
-      "execution_count": 78,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -737,7 +739,7 @@
         "id": "H7vQgh5zeCDe",
         "outputId": "cf9a054c-efd9-40b6-e854-d254ab17388f"
       },
-      "execution_count": 79,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -764,11 +766,23 @@
     },
     {
       "cell_type": "code",
+      "source": [
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')"
+      ],
+      "metadata": {
+        "id": "HF_v4HAKjqIE"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
       "source": [],
       "metadata": {
         "id": "4LKWnN-seCGE"
       },
-      "execution_count": 79,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -777,7 +791,7 @@
       "metadata": {
         "id": "VO-fUDMTeCI7"
       },
-      "execution_count": 79,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -786,7 +800,7 @@
       "metadata": {
         "id": "rLdfZR7-eCLa"
       },
-      "execution_count": 79,
+      "execution_count": null,
       "outputs": []
     }
   ]
