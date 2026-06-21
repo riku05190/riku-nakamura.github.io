@@ -248,45 +248,114 @@
     ]
   },
   {
-    "objectID": "starter_bank_ipynb.html",
-    "href": "starter_bank_ipynb.html",
+    "objectID": "Module5.html",
+    "href": "Module5.html",
     "title": "Riku_Nakamura - Data Science Portfolio",
     "section": "",
-    "text": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport pickle\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report, confusion_matrix\n\n\ntrain_data = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bank.csv')\nholdout_data = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bank_holdout_test.csv')\n\n\ntrain_data['y'] = train_data['y'].map({'yes': 1, 'no': 0})\n\n\ncampaign_impact = train_data.groupby('campaign')['y'].mean()\nprint(\"\\nConversion Rate by Campaign Contacts:\")\nprint(campaign_impact.head(6))\nprint(\"\\nConversion Rate by Day of Week:\")\nprint(train_data.groupby('day_of_week')['y'].mean().sort_values(ascending=False))\nprint(\"\\nStudent Conversion Rate:\", train_data[train_data['job'] == 'student']['y'].mean())\nprint(\"Overall Conversion Rate:\", train_data['y'].mean())\n\n\nConversion Rate by Campaign Contacts:\ncampaign\n1    0.131347\n2    0.113879\n3    0.110325\n4    0.095038\n5    0.076117\n6    0.078363\nName: y, dtype: float64\n\nConversion Rate by Day of Week:\nday_of_week\nthu    0.123741\nwed    0.117735\ntue    0.117607\nfri    0.109011\nmon    0.099386\nName: y, dtype: float64\n\nStudent Conversion Rate: 0.31399747793190413\nOverall Conversion Rate: 0.11351803393671261\n\n\n\ndef preprocess_features(df):\n    df_copy = df.copy()\n\n    # [Condition Met] Binning age to reduce complexity\n    df_copy['age_binned'] = pd.cut(df_copy['age'], bins=[0, 25, 60, 100], labels=['young', 'adult', 'senior'])\n    df_copy = df_copy.drop('age', axis=1)\n\n    # [Condition Met] Binning economic indicators (Beatriz's request)\n    df_copy['conf_idx_binned'] = pd.qcut(df_copy['cons.conf.idx'], q=3, labels=['Low', 'Medium', 'High'])\n    df_copy = df_copy.drop('cons.conf.idx', axis=1)\n\n    return df_copy\nX_raw = train_data.drop('y', axis=1)\nX_processed = preprocess_features(X_raw)\ny = train_data['y']\n\nX = pd.get_dummies(X_processed, drop_first=True)\n\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n\n\nmodel = RandomForestClassifier(n_estimators=100, max_depth=10, class_weight='balanced', random_state=42)\nmodel.fit(X_train, y_train)\n\ny_pred = model.predict(X_test)\nprint(\"\\n--- Internal Test Results ---\")\nprint(confusion_matrix(y_test, y_pred))\nprint(classification_report(y_test, y_pred))\n\n\n--- Internal Test Results ---\n[[5750  778]\n [ 332  554]]\n              precision    recall  f1-score   support\n\n           0       0.95      0.88      0.91      6528\n           1       0.42      0.63      0.50       886\n\n    accuracy                           0.85      7414\n   macro avg       0.68      0.75      0.71      7414\nweighted avg       0.88      0.85      0.86      7414\n\n\n\n\nwith open('bank_model.pkl', 'wb') as f:\n    pickle.dump(model, f, protocol=5)\nprint(\"\\nbank_model.pkl saved using protocol version 5.\")\n\n\nbank_model.pkl saved using protocol version 5.\n\n\n\nholdout_processed = preprocess_features(holdout_data)\nholdout_final = pd.get_dummies(holdout_processed, drop_first=True)\nholdout_final = holdout_final.reindex(columns=X.columns, fill_value=0)\n\nholdout_predictions = model.predict(holdout_final)\n\n\nmy_predictions = pd.DataFrame(holdout_predictions, columns=['predictions'])\n\n\nfilename = \"team4-module2-predictions.csv\"\nmy_predictions.to_csv(filename, index=False)\n\n\nplt.figure(figsize=(10, 6))\nfeat_importances = pd.Series(model.feature_importances_, index=X.columns)\nfeat_importances.nlargest(10).plot(kind='barh', color='skyblue')\nplt.title(\"Top 10 Most Influential Factors for Subscription\")\nplt.xlabel(\"Importance Score\")\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\nplt.figure(figsize=(10, 5))\ncampaign_plot_data = train_data.groupby('campaign')['y'].mean().head(10)\nsns.barplot(x=campaign_plot_data.index, y=campaign_plot_data.values, palette=\"Reds_r\")\nplt.axhline(train_data['y'].mean(), color='black', linestyle='--', label='Overall Avg')\nplt.title(\"Conversion Rate Drops as Contact Frequency Increases\")\nplt.ylabel(\"Success Rate\")\nplt.legend()\nplt.show()\n\n/tmp/ipykernel_13595/1923856096.py:3: FutureWarning: \n\nPassing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.\n\n  sns.barplot(x=campaign_plot_data.index, y=campaign_plot_data.values, palette=\"Reds_r\")\n\n\n\n\n\n\n\n\n\n\nplt.figure(figsize=(10, 5))\nday_order = ['mon', 'tue', 'wed', 'thu', 'fri']\nday_plot_data = train_data.groupby('day_of_week')['y'].mean().reindex(day_order)\nsns.barplot(x=day_plot_data.index, y=day_plot_data.values, palette=\"viridis\")\nplt.title(\"Conversion Rate by Day of the Week (Thursday is Peak)\")\nplt.ylabel(\"Success Rate\")\nplt.show()\n\n/tmp/ipykernel_13595/3184915913.py:4: FutureWarning: \n\nPassing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.\n\n  sns.barplot(x=day_plot_data.index, y=day_plot_data.values, palette=\"viridis\")\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
+    "text": "!echo \"Downloading files...\"\n!wget -q https://github.com/byui-cse/cse450-course/raw/master/data/roadsigns/training1.zip\n!wget -q https://github.com/byui-cse/cse450-course/raw/master/data/roadsigns/training2.zip\n!wget -q https://github.com/byui-cse/cse450-course/raw/master/data/roadsigns/holdout.zip\n!wget -q https://github.com/byui-cse/cse450-course/raw/master/data/roadsigns/mini_holdout.zip\n!wget -q https://github.com/byui-cse/cse450-course/raw/master/data/roadsigns/mini_holdout_answers.csv\n\nDownloading files...\n\n\n\n!echo \"Unzipping files...\"\n!unzip -q -o /content/training1.zip\n!unzip -q -o /content/training2.zip\n!unzip -q -o /content/holdout.zip\n!unzip -q -o /content/mini_holdout.zip\n\nUnzipping files...\n\n\n\n!echo \"Merging training data...\"\n!mkdir -p /content/training\n!mv /content/training1/* /content/training/ 2&gt;/dev/null || true\n!mv /content/training2/* /content/training/ 2&gt;/dev/null || true\n\nMerging training data...\n\n\n\n!echo \"Cleaning up...\"\n!rm -rf /content/training1\n!rm -rf /content/training2\n!rm training1.zip\n!rm training2.zip\n!rm holdout.zip\n!rm mini_holdout.zip\n!echo \"Data ready.\"\n\nCleaning up...\nData ready.\n\n\n\nimport pandas as pd\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom tensorflow.keras import layers, models, applications\nfrom tensorflow.keras.preprocessing.image import ImageDataGenerator\nfrom tensorflow.keras.callbacks import TensorBoard, EarlyStopping\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport os\nimport datetime\n\n\ntraining_dir = '/content/training/'\nimage_size = (128, 128)\nbatch_size_config = 32\nnum_classes = 43\n\n\ntrain_datagen = ImageDataGenerator(\nrescale=1./255,\nrotation_range=15,\nzoom_range=0.15,\nwidth_shift_range=0.1,\nheight_shift_range=0.1,\nvalidation_split=0.2\n)\n\n\nvalidation_datagen = ImageDataGenerator(\nrescale=1./255,\nvalidation_split=0.2\n)\n\n\ntrain_generator = train_datagen.flow_from_directory(\ntraining_dir,\ntarget_size=image_size,\nsubset=\"training\",\nbatch_size=batch_size_config,\nclass_mode='sparse',\nseed=42,\nshuffle=True\n)\n\nFound 31368 images belonging to 43 classes.\n\n\n\nvalidation_generator = validation_datagen.flow_from_directory(\ntraining_dir,\ntarget_size=image_size,\nbatch_size=batch_size_config,\nclass_mode='sparse',\nsubset=\"validation\",\nseed=42\n)\n\nFound 7841 images belonging to 43 classes.\n\n\n\ntarget_names = ['Speed_20', 'Speed_30', 'Speed_50', 'Speed_60', 'Speed_70',\n'Speed_80','Speed_Limit_Ends', 'Speed_100', 'Speed_120', 'Overtaking_Prohibited',\n'Overtakeing_Prohibited_Trucks', 'Priority', 'Priority_Road_Ahead', 'Yield', 'STOP',\n'Entry_Forbidden', 'Trucks_Forbidden', 'No_Entry(one-way traffic)', 'General Danger(!)', 'Left_Curve_Ahead',\n'Right_Curve_Ahead', 'Double_Curve', 'Poor_Surface_Ahead', 'Slippery_Surface_Ahead', 'Road_Narrows_On_Right',\n'Roadwork_Ahead', 'Traffic_Light_Ahead', 'Warning_Pedestrians', 'Warning_Children', 'Warning_Bikes',\n'Ice_Snow', 'Deer_Crossing', 'End_Previous_Limitation', 'Turning_Right_Compulsory', 'Turning_Left_Compulsory',\n'Ahead_Only', 'Straight_Or_Right_Mandatory', 'Straight_Or_Left_Mandatory', 'Passing_Right_Compulsory', 'Passing_Left_Compulsory',\n'Roundabout', 'End_Overtaking_Prohibition', 'End_Overtaking_Prohibition_Trucks']\n\n\nplt.figure(figsize=(10, 10))\nimages, labels = next(train_generator)\n\n&lt;Figure size 1000x1000 with 0 Axes&gt;\n\n\n\nfor i in range(min(9, images.shape[0])):\n    ax = plt.subplot(3, 3, i + 1)\n    plt.imshow(images[i])\n    plt.title(target_names[int(labels[i])])\n    plt.axis(\"off\")\nplt.show()\n\n\n\n\n\n\n\n\n\ndef build_gehirnwagen_model():\n    base_model = applications.MobileNetV2(\n        input_shape=(image_size[0], image_size[1], 3),\n        include_top=False,\n        weights='imagenet'\n    )\n    base_model.trainable = False\n\n\ndef build_gehirnwagen_model():\n    base_model = applications.MobileNetV2(\n        input_shape=(image_size[0], image_size[1], 3),\n        include_top=False,\n        weights='imagenet'\n    )\n    base_model.trainable = False\n\n    model = models.Sequential([\n        layers.Input(shape=(image_size[0], image_size[1], 3)),\n        layers.Lambda(lambda x: (x * 2.0) - 1.0),\n        base_model,\n        layers.GlobalAveragePooling2D(),\n        layers.Dropout(0.3),\n        layers.Dense(num_classes, activation='softmax')\n    ])\n\n    model.compile(\n        optimizer='adam',\n        loss='sparse_categorical_crossentropy',\n        metrics=['accuracy']\n    )\n    return model\n\n\nmodel = build_gehirnwagen_model()\n\nprint(\"Setting up optimization callbacks...\")\nlog_dir = os.path.join(\"logs\", \"fit\", datetime.datetime.now().strftime(\"%Y%m%d-%H%M%S\"))\ntensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)\n\nearly_stop = EarlyStopping(\nmonitor='val_loss',\npatience=4,\nrestore_best_weights=True\n)\n\nSetting up optimization callbacks...\n\n\n\nhistory = model.fit(\ntrain_generator,\nepochs=15,\nvalidation_data=validation_generator,\ncallbacks=[tensorboard_callback, early_stop]\n)\n\n\nEpoch 1/15\n\n981/981 ━━━━━━━━━━━━━━━━━━━━ 741s 748ms/step - accuracy: 0.6536 - loss: 1.1083 - val_accuracy: 0.6407 - val_loss: 1.1703\n\nEpoch 2/15\n\n981/981 ━━━━━━━━━━━━━━━━━━━━ 726s 740ms/step - accuracy: 0.7999 - loss: 0.5944 - val_accuracy: 0.6611 - val_loss: 1.1978\n\nEpoch 3/15\n\n981/981 ━━━━━━━━━━━━━━━━━━━━ 714s 728ms/step - accuracy: 0.8308 - loss: 0.5007 - val_accuracy: 0.6632 - val_loss: 1.1744\n\nEpoch 4/15\n\n981/981 ━━━━━━━━━━━━━━━━━━━━ 711s 724ms/step - accuracy: 0.8381 - loss: 0.4676 - val_accuracy: 0.6731 - val_loss: 1.2150\n\nEpoch 5/15\n\n981/981 ━━━━━━━━━━━━━━━━━━━━ 705s 718ms/step - accuracy: 0.8449 - loss: 0.4466 - val_accuracy: 0.6763 - val_loss: 1.2211\n\n\n\n\n\nmodel_save_path = \"/content/saved_gehirnwagen_model.keras\"\nmodel.save(model_save_path)\n\nprint(\"=\")\nprint(\"PIPELINE EXECUTION SUCCESSFUL\")\nprint(\"=\")\nprint(\"Model saved successfully at: \" + model_save_path)\nprint(\"TensorBoard logs generated at: \" + log_dir)\nprint(\"The AI team can now import this directory into coremltools for Apple CarKit integration.\")\nprint(\"=========================================================\")\n\n=\nPIPELINE EXECUTION SUCCESSFUL\n=\nModel saved successfully at: /content/saved_gehirnwagen_model.keras\nTensorBoard logs generated at: logs/fit/20260621-010050\nThe AI team can now import this directory into coremltools for Apple CarKit integration.\n=========================================================\n\n\n\nimport matplotlib.pyplot as plt\n\nplt.figure(figsize=(8, 5))\nplt.plot(history.history['accuracy'], label='Training (Textbook)')\nplt.plot(history.history['val_accuracy'], label='Validation (Mock Test)')\nplt.title('AI Learning Progress')\nplt.ylabel('Accuracy Rate')\nplt.xlabel('Study Rounds')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "exploration.html",
-    "href": "exploration.html",
-    "title": "about me",
+    "objectID": "starter_bikes.html",
+    "href": "starter_bikes.html",
+    "title": "Riku_Nakamura - Data Science Portfolio",
     "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Exploration"
-    ]
+    "text": "import pandas as pd\nimport numpy as np\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom tensorflow.keras import layers\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import MinMaxScaler\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport warnings\n\nwarnings.filterwarnings('ignore')\n\n\ntrain_url = 'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bikes.csv'\ndecember_url = 'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bikes_december.csv'\nmini_url = 'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/biking_holdout_test_mini.csv'\n\ndf_train = pd.read_csv(train_url)\ndf_december = pd.read_csv(december_url)\ndf_mini = pd.read_csv(mini_url)\n\n\ndef preprocess_features(df):\n    df_clean = df.copy()\n    drop_cols = ['casual', 'registered']\n    if 'dteday' in df_clean.columns:\n        drop_cols.append('dteday')\n\n    df_clean = df_clean.drop(columns=[col for col in drop_cols if col in df_clean.columns])\n    df_clean = df_clean.fillna(0)\n    return df_clean\n\ntrain_clean = preprocess_features(df_train)\ndecember_clean = preprocess_features(df_december)\nmini_clean = preprocess_features(df_mini)\n\ntarget_col = 'count' if 'count' in train_clean.columns else 'cnt' if 'cnt' in train_clean.columns else train_clean.columns[-1]\n\nX = train_clean.drop(columns=[target_col])\ny = train_clean[target_col]\n\nX_december = december_clean.copy()\nX_mini = mini_clean.copy()\n\nX_encoded = pd.get_dummies(X, drop_first=True)\nX_december_encoded = pd.get_dummies(X_december, drop_first=True)\nX_mini_encoded = pd.get_dummies(X_mini, drop_first=True)\n\nX_december_final = X_december_encoded.reindex(columns=X_encoded.columns, fill_value=0)\nX_mini_final = X_mini_encoded.reindex(columns=X_encoded.columns, fill_value=0)\n\nscaler = MinMaxScaler()\nX_scaled = scaler.fit_transform(X_encoded)\nX_december_scaled = scaler.transform(X_december_final)\nX_mini_scaled = scaler.transform(X_mini_final)\n\nX_train, X_val, y_train, y_val = train_test_split(X_scaled, y, test_size=0.2, random_state=42)\n\n\n\nmodel = keras.Sequential([\nlayers.Dense(128, activation='relu', input_shape=[X_train.shape[1]]),\nlayers.Dropout(0.2),\nlayers.Dense(64, activation='relu'),\nlayers.Dropout(0.2),\nlayers.Dense(32, activation='relu'),\nlayers.Dense(1)\n])\n\nmodel.compile(optimizer='adam', loss='mse', metrics=['mae'])\n\nearly_stop = keras.callbacks.EarlyStopping(\nmonitor='val_loss',\npatience=10,\nrestore_best_weights=True\n)\n\nhistory = model.fit(\nX_train, y_train,\nvalidation_data=(X_val, y_val),\nepochs=100,\nbatch_size=64,\ncallbacks=[early_stop],\nverbose=0\n)\n\n\ndef generate_predictions(model, scaled_data):\n    preds = model.predict(scaled_data, verbose=0).flatten()\n    return np.round(np.clip(preds, 0, None)).astype(int)\n\npreds_december = generate_predictions(model, X_december_scaled)\npreds_mini = generate_predictions(model, X_mini_scaled)\n\ndf_sub_december = pd.DataFrame({'predictions': preds_december})\ndf_sub_mini = pd.DataFrame({'predictions': preds_mini})\n\nteam_number = \"team4\"\nfile_december = team_number + \"-module04-predictions-december.csv\"\nfile_mini = team_number + \"-module04-predictions-mini.csv\"\n\ndf_sub_december.to_csv(file_december, index=False)\ndf_sub_mini.to_csv(file_mini, index=False)\n\n\n\n[5/6] Generating Business Insights Visualizations...\n\n\n\nsns.set_theme(style=\"whitegrid\")\nplt.rcParams['figure.figsize'] = (12, 6)\nplt.figure()\ndf_train['cnt'] = df_train['casual'] + df_train['registered']\nsns.lineplot(data=df_train, x='hr', y='cnt', hue='workingday', palette='Set1', errorbar=None, linewidth=2.5)\nplt.title('Average Bike Rentals by Hour of Day (Working Day vs. Weekend/Holiday)', fontsize=16, fontweight='bold')\nplt.xlabel('Hour of the Day (0-23)', fontsize=12)\nplt.ylabel('Average Rentals', fontsize=12)\nplt.xticks(range(0, 24))\nplt.legend(title='Working Day', labels=['Weekend/Holiday (0)', 'Working Day (1)'])\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\ndf_train['perceived_temp_celsius'] = df_train['feels_like_c']\n\nplt.figure()\nsns.scatterplot(data=df_train, x='perceived_temp_celsius', y='cnt', alpha=0.3, color='teal')\nsns.regplot(data=df_train, x='perceived_temp_celsius', y='cnt', scatter=False, color='red', line_kws={\"linewidth\":2})\nplt.title('Impact of Perceived Temperature on Total Rentals', fontsize=16, fontweight='bold')\nplt.xlabel('Perceived Temperature (Celsius)', fontsize=12)\nplt.ylabel('Total Rentals', fontsize=12)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\nplt.figure()\nsns.boxplot(data=df_train, x='weathersit', y='cnt', palette='Blues_r')\nplt.title('Rental Distribution by Weather Situation', fontsize=16, fontweight='bold')\nplt.xlabel('Weather (1: Clear, 2: Mist/Cloudy, 3: Light Rain/Snow, 4: Heavy Rain/Ice)', fontsize=12)\nplt.ylabel('Total Rentals', fontsize=12)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "exploration.html#title-2-header",
-    "href": "exploration.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Exploration"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Exploration/project1.html",
-    "href": "Cleansing_Exploration/project1.html",
+    "objectID": "Cleansing_Exploration/project2.html",
+    "href": "Cleansing_Exploration/project2.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "Cleansing_Exploration/project5.html",
-    "href": "Cleansing_Exploration/project5.html",
+    "objectID": "Cleansing_Exploration/project3.html",
+    "href": "Cleansing_Exploration/project3.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project4.html",
+    "href": "Cleansing_Exploration/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Competition/project2.html",
+    "href": "Competition/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Competition/project3.html",
+    "href": "Competition/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Competition/project4.html",
+    "href": "Competition/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "ml.html",
+    "href": "ml.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "ml.html#title-2-header",
+    "href": "ml.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "Competition/project5.html",
+    "href": "Competition/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Competition/project1.html",
+    "href": "Competition/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 1"
+    ]
   },
   {
     "objectID": "Assessment.html#submission",
@@ -317,107 +386,45 @@
     "text": "Problem Group 3\nFor the questions in this group, you’ll work with the Titanic Dataset found at this url: https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/titanic.csv\n\nQuestion 6\nAfter loading the dataset into a pandas DataFrame, create a new column called NameGroup that contains the first letter of the passenger’s surname in lower case.\nNote that in the dataset, passenger’s names are provided in the Name column and are listed as:\nSurname, Given names\nFor example, if a passenger’s Name is Braund, Mr. Owen Harris, the NameGroup column should contain the value b.\nThen count how many passengers have a NameGroup value of k.\n\ntitanic_url = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/titanic.csv\"\ndf_titanic = pd.read_csv(titanic_url)\n\n# Create NameGroup column containing the first letter of the surname in lowercase\n# The format is \"Surname, Given names\" so we split by comma and take the first character\ndf_titanic['NameGroup'] = df_titanic['Name'].str.split(',').str[0].str[0].str.lower()\n\n# Count how many passengers have a NameGroup value of 'k'\nk_count = df_titanic[df_titanic['NameGroup'] == 'k'].shape[0]\nprint(f\"Number of passengers in NameGroup 'k': {k_count}\")\n\nNumber of passengers in NameGroup 'k': 28"
   },
   {
-    "objectID": "Competition/project1.html",
-    "href": "Competition/project1.html",
+    "objectID": "Cleansing_Exploration/project5.html",
+    "href": "Cleansing_Exploration/project5.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 1"
-    ]
+    "text": "Paste in a template\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "Competition/project5.html",
-    "href": "Competition/project5.html",
+    "objectID": "Cleansing_Exploration/project1.html",
+    "href": "Cleansing_Exploration/project1.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 5"
-    ]
+    "text": "Paste in a template\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "ml.html",
-    "href": "ml.html",
+    "objectID": "exploration.html",
+    "href": "exploration.html",
     "title": "about me",
     "section": "",
     "text": "MarkDown Basics",
     "crumbs": [
-      "Machine Learning"
+      "Data Exploration"
     ]
   },
   {
-    "objectID": "ml.html#title-2-header",
-    "href": "ml.html#title-2-header",
+    "objectID": "exploration.html#title-2-header",
+    "href": "exploration.html#title-2-header",
     "title": "about me",
     "section": "",
     "text": "MarkDown Basics",
     "crumbs": [
-      "Machine Learning"
+      "Data Exploration"
     ]
   },
   {
-    "objectID": "Competition/project4.html",
-    "href": "Competition/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "Competition/project3.html",
-    "href": "Competition/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Competition/project2.html",
-    "href": "Competition/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Exploration/project4.html",
-    "href": "Cleansing_Exploration/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project3.html",
-    "href": "Cleansing_Exploration/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project2.html",
-    "href": "Cleansing_Exploration/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "starter_bikes.html",
-    "href": "starter_bikes.html",
+    "objectID": "starter_bank_ipynb.html",
+    "href": "starter_bank_ipynb.html",
     "title": "Riku_Nakamura - Data Science Portfolio",
     "section": "",
-    "text": "import pandas as pd\nimport numpy as np\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom tensorflow.keras import layers\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import MinMaxScaler\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport warnings\n\nwarnings.filterwarnings('ignore')\n\n\ntrain_url = 'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bikes.csv'\ndecember_url = 'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bikes_december.csv'\nmini_url = 'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/biking_holdout_test_mini.csv'\n\ndf_train = pd.read_csv(train_url)\ndf_december = pd.read_csv(december_url)\ndf_mini = pd.read_csv(mini_url)\n\n\ndef preprocess_features(df):\n    df_clean = df.copy()\n    drop_cols = ['casual', 'registered']\n    if 'dteday' in df_clean.columns:\n        drop_cols.append('dteday')\n\n    df_clean = df_clean.drop(columns=[col for col in drop_cols if col in df_clean.columns])\n    df_clean = df_clean.fillna(0)\n    return df_clean\n\ntrain_clean = preprocess_features(df_train)\ndecember_clean = preprocess_features(df_december)\nmini_clean = preprocess_features(df_mini)\n\ntarget_col = 'count' if 'count' in train_clean.columns else 'cnt' if 'cnt' in train_clean.columns else train_clean.columns[-1]\n\nX = train_clean.drop(columns=[target_col])\ny = train_clean[target_col]\n\nX_december = december_clean.copy()\nX_mini = mini_clean.copy()\n\nX_encoded = pd.get_dummies(X, drop_first=True)\nX_december_encoded = pd.get_dummies(X_december, drop_first=True)\nX_mini_encoded = pd.get_dummies(X_mini, drop_first=True)\n\nX_december_final = X_december_encoded.reindex(columns=X_encoded.columns, fill_value=0)\nX_mini_final = X_mini_encoded.reindex(columns=X_encoded.columns, fill_value=0)\n\nscaler = MinMaxScaler()\nX_scaled = scaler.fit_transform(X_encoded)\nX_december_scaled = scaler.transform(X_december_final)\nX_mini_scaled = scaler.transform(X_mini_final)\n\nX_train, X_val, y_train, y_val = train_test_split(X_scaled, y, test_size=0.2, random_state=42)\n\n\n\nmodel = keras.Sequential([\nlayers.Dense(128, activation='relu', input_shape=[X_train.shape[1]]),\nlayers.Dropout(0.2),\nlayers.Dense(64, activation='relu'),\nlayers.Dropout(0.2),\nlayers.Dense(32, activation='relu'),\nlayers.Dense(1)\n])\n\nmodel.compile(optimizer='adam', loss='mse', metrics=['mae'])\n\nearly_stop = keras.callbacks.EarlyStopping(\nmonitor='val_loss',\npatience=10,\nrestore_best_weights=True\n)\n\nhistory = model.fit(\nX_train, y_train,\nvalidation_data=(X_val, y_val),\nepochs=100,\nbatch_size=64,\ncallbacks=[early_stop],\nverbose=0\n)\n\n\ndef generate_predictions(model, scaled_data):\n    preds = model.predict(scaled_data, verbose=0).flatten()\n    return np.round(np.clip(preds, 0, None)).astype(int)\n\npreds_december = generate_predictions(model, X_december_scaled)\npreds_mini = generate_predictions(model, X_mini_scaled)\n\ndf_sub_december = pd.DataFrame({'predictions': preds_december})\ndf_sub_mini = pd.DataFrame({'predictions': preds_mini})\n\nteam_number = \"team4\"\nfile_december = team_number + \"-module04-predictions-december.csv\"\nfile_mini = team_number + \"-module04-predictions-mini.csv\"\n\ndf_sub_december.to_csv(file_december, index=False)\ndf_sub_mini.to_csv(file_mini, index=False)\n\n\n\n[5/6] Generating Business Insights Visualizations...\n\n\n\nsns.set_theme(style=\"whitegrid\")\nplt.rcParams['figure.figsize'] = (12, 6)\nplt.figure()\ndf_train['cnt'] = df_train['casual'] + df_train['registered']\nsns.lineplot(data=df_train, x='hr', y='cnt', hue='workingday', palette='Set1', errorbar=None, linewidth=2.5)\nplt.title('Average Bike Rentals by Hour of Day (Working Day vs. Weekend/Holiday)', fontsize=16, fontweight='bold')\nplt.xlabel('Hour of the Day (0-23)', fontsize=12)\nplt.ylabel('Average Rentals', fontsize=12)\nplt.xticks(range(0, 24))\nplt.legend(title='Working Day', labels=['Weekend/Holiday (0)', 'Working Day (1)'])\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\ndf_train['perceived_temp_celsius'] = df_train['feels_like_c']\n\nplt.figure()\nsns.scatterplot(data=df_train, x='perceived_temp_celsius', y='cnt', alpha=0.3, color='teal')\nsns.regplot(data=df_train, x='perceived_temp_celsius', y='cnt', scatter=False, color='red', line_kws={\"linewidth\":2})\nplt.title('Impact of Perceived Temperature on Total Rentals', fontsize=16, fontweight='bold')\nplt.xlabel('Perceived Temperature (Celsius)', fontsize=12)\nplt.ylabel('Total Rentals', fontsize=12)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\nplt.figure()\nsns.boxplot(data=df_train, x='weathersit', y='cnt', palette='Blues_r')\nplt.title('Rental Distribution by Weather Situation', fontsize=16, fontweight='bold')\nplt.xlabel('Weather (1: Clear, 2: Mist/Cloudy, 3: Light Rain/Snow, 4: Heavy Rain/Ice)', fontsize=12)\nplt.ylabel('Total Rentals', fontsize=12)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
+    "text": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport pickle\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report, confusion_matrix\n\n\ntrain_data = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bank.csv')\nholdout_data = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bank_holdout_test.csv')\n\n\ntrain_data['y'] = train_data['y'].map({'yes': 1, 'no': 0})\n\n\ncampaign_impact = train_data.groupby('campaign')['y'].mean()\nprint(\"\\nConversion Rate by Campaign Contacts:\")\nprint(campaign_impact.head(6))\nprint(\"\\nConversion Rate by Day of Week:\")\nprint(train_data.groupby('day_of_week')['y'].mean().sort_values(ascending=False))\nprint(\"\\nStudent Conversion Rate:\", train_data[train_data['job'] == 'student']['y'].mean())\nprint(\"Overall Conversion Rate:\", train_data['y'].mean())\n\n\nConversion Rate by Campaign Contacts:\ncampaign\n1    0.131347\n2    0.113879\n3    0.110325\n4    0.095038\n5    0.076117\n6    0.078363\nName: y, dtype: float64\n\nConversion Rate by Day of Week:\nday_of_week\nthu    0.123741\nwed    0.117735\ntue    0.117607\nfri    0.109011\nmon    0.099386\nName: y, dtype: float64\n\nStudent Conversion Rate: 0.31399747793190413\nOverall Conversion Rate: 0.11351803393671261\n\n\n\ndef preprocess_features(df):\n    df_copy = df.copy()\n\n    # [Condition Met] Binning age to reduce complexity\n    df_copy['age_binned'] = pd.cut(df_copy['age'], bins=[0, 25, 60, 100], labels=['young', 'adult', 'senior'])\n    df_copy = df_copy.drop('age', axis=1)\n\n    # [Condition Met] Binning economic indicators (Beatriz's request)\n    df_copy['conf_idx_binned'] = pd.qcut(df_copy['cons.conf.idx'], q=3, labels=['Low', 'Medium', 'High'])\n    df_copy = df_copy.drop('cons.conf.idx', axis=1)\n\n    return df_copy\nX_raw = train_data.drop('y', axis=1)\nX_processed = preprocess_features(X_raw)\ny = train_data['y']\n\nX = pd.get_dummies(X_processed, drop_first=True)\n\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n\n\nmodel = RandomForestClassifier(n_estimators=100, max_depth=10, class_weight='balanced', random_state=42)\nmodel.fit(X_train, y_train)\n\ny_pred = model.predict(X_test)\nprint(\"\\n--- Internal Test Results ---\")\nprint(confusion_matrix(y_test, y_pred))\nprint(classification_report(y_test, y_pred))\n\n\n--- Internal Test Results ---\n[[5750  778]\n [ 332  554]]\n              precision    recall  f1-score   support\n\n           0       0.95      0.88      0.91      6528\n           1       0.42      0.63      0.50       886\n\n    accuracy                           0.85      7414\n   macro avg       0.68      0.75      0.71      7414\nweighted avg       0.88      0.85      0.86      7414\n\n\n\n\nwith open('bank_model.pkl', 'wb') as f:\n    pickle.dump(model, f, protocol=5)\nprint(\"\\nbank_model.pkl saved using protocol version 5.\")\n\n\nbank_model.pkl saved using protocol version 5.\n\n\n\nholdout_processed = preprocess_features(holdout_data)\nholdout_final = pd.get_dummies(holdout_processed, drop_first=True)\nholdout_final = holdout_final.reindex(columns=X.columns, fill_value=0)\n\nholdout_predictions = model.predict(holdout_final)\n\n\nmy_predictions = pd.DataFrame(holdout_predictions, columns=['predictions'])\n\n\nfilename = \"team4-module2-predictions.csv\"\nmy_predictions.to_csv(filename, index=False)\n\n\nplt.figure(figsize=(10, 6))\nfeat_importances = pd.Series(model.feature_importances_, index=X.columns)\nfeat_importances.nlargest(10).plot(kind='barh', color='skyblue')\nplt.title(\"Top 10 Most Influential Factors for Subscription\")\nplt.xlabel(\"Importance Score\")\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\nplt.figure(figsize=(10, 5))\ncampaign_plot_data = train_data.groupby('campaign')['y'].mean().head(10)\nsns.barplot(x=campaign_plot_data.index, y=campaign_plot_data.values, palette=\"Reds_r\")\nplt.axhline(train_data['y'].mean(), color='black', linestyle='--', label='Overall Avg')\nplt.title(\"Conversion Rate Drops as Contact Frequency Increases\")\nplt.ylabel(\"Success Rate\")\nplt.legend()\nplt.show()\n\n/tmp/ipykernel_13595/1923856096.py:3: FutureWarning: \n\nPassing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.\n\n  sns.barplot(x=campaign_plot_data.index, y=campaign_plot_data.values, palette=\"Reds_r\")\n\n\n\n\n\n\n\n\n\n\nplt.figure(figsize=(10, 5))\nday_order = ['mon', 'tue', 'wed', 'thu', 'fri']\nday_plot_data = train_data.groupby('day_of_week')['y'].mean().reindex(day_order)\nsns.barplot(x=day_plot_data.index, y=day_plot_data.values, palette=\"viridis\")\nplt.title(\"Conversion Rate by Day of the Week (Thursday is Peak)\")\nplt.ylabel(\"Success Rate\")\nplt.show()\n\n/tmp/ipykernel_13595/3184915913.py:4: FutureWarning: \n\nPassing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.\n\n  sns.barplot(x=day_plot_data.index, y=day_plot_data.values, palette=\"viridis\")\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "Machine_Learning/project4.html",
